@@ -5,7 +5,7 @@ import Main from '@/components/layout/Main';
 import BenchmarkCharts from '@/components/BenchmarkCharts';
 
 export const metadata: Metadata = {
-	title: 'Benchmarks | Temper MC',
+	title: 'Benchmarks',
 	description: 'Performance benchmarks comparing Temper MC against Vanilla, Paper, and Purpur.',
 };
 
@@ -48,11 +48,12 @@ export default function BenchmarkPage() {
 							Performance
 						</p>
 						<h1 className="hero-header mb-5 animate-slide-up">
-							Numbers don't lie
+							Lorem ipsum
 						</h1>
 						<p className="text-lg text-text-secondary leading-relaxed animate-slide-up animate-delay-100">
-							All benchmarks run on identical hardware with no plugins. Methodology and raw data available
-							on GitHub.
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget justo sagittis, suscipit
+							massa nec, varius dolor. Morbi lacinia ante id massa interdum feugiat. Proin vitae lobortis
+							nulla.
 						</p>
 					</div>
 
@@ -117,8 +118,8 @@ export default function BenchmarkPage() {
 
 				{/* ── Disclaimer ── */}
 				<p className="text-xs text-text-muted text-center mt-10 max-w-2xl mx-auto leading-relaxed">
-					Benchmarks reflect synthetic load testing and may differ from real-world conditions.
-					All values are averages of 5 runs.
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget justo sagittis, suscipit massa nec,
+					varius dolor.
 				</p>
 
 			</Main>

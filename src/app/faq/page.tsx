@@ -1,5 +1,4 @@
 import type {Metadata} from 'next';
-import Link from 'next/link';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import Main from '@/components/layout/Main';
@@ -9,68 +8,57 @@ import {IoMdCog} from "react-icons/io";
 import {GiFocusedLightning} from "react-icons/gi";
 
 export const metadata: Metadata = {
-	title: 'FAQ | Temper MC',
-	description: 'Frequenter interrogata de Temper MC.',
+	title: 'FAQ',
+	description: 'Frequently asked questions.',
 };
 
 // ─── FAQ data ─────────────────────────────────────────────────
 
 const FAQ_CATEGORIES: FaqCategory[] = [
 	{
-		label: 'Generalia',
+		label: 'Lorem ipsum dolor',
 		gradient: 'linear-gradient(to right, var(--color-info), var(--color-primary))',
 		icon: <IoMdCog/>,
 		items: [
 			{
-				question: 'Quid est Temper MC?',
-				answer: 'Temper MC est programmatio servientis Minecraft in lingua Rust scripta. Servientem Vanilla Iavae funditus restituit, utens facultatibus performantiae Rust et Systemate Componentium Entitatis Bevy, ut TPS multo meliores, usum memoriae minorem, et executionem vere multi-filaceam praestet.',
+				question: 'Lorem ipsum dolor sit amet?',
+				answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget justo sagittis, suscipit massa nec, varius dolor. ',
 			},
 			{
-				question: 'Estne Temper MC additamentum an modificatio?',
-				answer: 'Neutrum — est binarium servientis solitarium quod servientem Vanilla omnino substituit. Scaeniciis tuis per clientem Minecraft Editionis Iavae normalem connectere licet. Nulla modificatio, nulla programmata initiantia, nulla configuratio specialis clientis requiritur.',
+				question: 'Lorem ipsum dolor sit amet?',
+				answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget justo sagittis, suscipit massa nec, varius dolor. ',
 			},
 			{
-				question: 'Quae versiones Minecraft sustentantur?',
-				answer: 'Temper MC nunc Minecraft Editionem Iavam 1.20.x petit. Subsidium versionibus novarum post unumquodque maius emissionem Minecraft volutim additur. Subsidium Editionis Bedrock cogitatur sed nondum in proximis consiliis est.',
+				question: 'Lorem ipsum dolor sit amet?',
+				answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget justo sagittis, suscipit massa nec, varius dolor. ',
 			},
 			{
-				question: 'Estne hoc paratum ad usum in productione?',
-				answer: 'Temper MC in evolutione activa est et celeriter proficit. Anulus principalis servientis, persistentia mundi, et tractatio scaenicorum satis stabilia sunt pro servientibus parvis et mediis. Suademus ut cum solutione subsidii utaris et mutationum rupturarum in commentario observes donec v1.0 emittatur.',
+				question: 'Lorem ipsum dolor sit amet?',
+				answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget justo sagittis, suscipit massa nec, varius dolor. ',
 			},
 		] satisfies FaqItem[],
 	},
 	{
-		label: 'Performantia et Compatibilitas',
+		label: 'Lorem ipsum dolor',
 		gradient: 'linear-gradient(to right, var(--color-primary), var(--color-surface))',
 		icon: <GiFocusedLightning/>,
 		items: [
 			{
-				question: 'Quanto celerior est Temper MC quam Vanilla?',
-				answer: (
-					<>
-						In experimentis nostris, Temper MC TPS XX apud CC scaenicos tenet ubi Vanilla ad ~VII TPS cadit.
-						Tempus inceptionis est ~I.IV s contra ~XIV.VI s Vanilla. Usus memoriae apud C scaenicos est
-						~CCCXII MB contra ~I.III GB.
-						Vide plenam{' '}
-						<Link href="/benchmark"
-						      className="underline hover:text-[var(--color-primary)] transition-colors">
-							paginam comparationum
-						</Link>{' '}
-						pro comparationibus minutis.
-					</>
-				),
+				question: 'Lorem ipsum dolor sit amet?',
+				answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget justo sagittis, suscipit massanec, varius dolor.'
+
 			},
 			{
-				question: 'Operaturne cum mundis Vanilla iam existentibus?',
-				answer: 'Ita — Temper MC formam mundi Anvil normalem legit, quam Vanilla, Paper, et Spigot utuntur. Fasciculum mundi tui existentis directe transcribere potes. Subsidium sumere ante migrationem cautelae causa suademus.',
+				question: 'Lorem ipsum dolor sit amet?',
+				answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget justo sagittis, suscipit massa nec, varius dolor. ',
 			},
 			{
-				question: 'In qua machina Temper MC currit?',
-				answer: 'Temper MC in Linux (x86_64 et ARM64), macOS (Silicio Pomi et Intel), et Fenestris (x64) currit. Bene crescit a VPS unius nuclei ad servientem dedicatum XXXII nucleorum — quanto plures nuclei praesto sunt, eo plus parallelismi Systema ECS Bevy exploitare potest.',
+				question: 'Lorem ipsum dolor sit amet?',
+				answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget justo sagittis, suscipit massa nec, varius dolor. ',
 			},
 			{
-				question: 'Possum sine difficultatibus ex Paper aut Purpur migrare?',
-				answer: 'Data mundi munde migrant. Data scaenicorum (thesauri, positiones) sunt compatibilia. Proprietates servientis per temper.toml substituuntur — auxiliar CLI migrationis in binario includitur (curre temper migrate --from paper) ut configurationem tuam automatice convertat.',
+				question: 'Lorem ipsum dolor sit amet?',
+				answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget justo sagittis, suscipit massa nec, varius dolor. ',
 			},
 		] satisfies FaqItem[],
 	},

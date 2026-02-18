@@ -4,7 +4,7 @@ import Footer from '@/components/layout/Footer';
 import Main from '@/components/layout/Main';
 
 export const metadata: Metadata = {
-	title: 'Home | Temper MC',
+	title: 'Home',
 	description: 'Crafting exceptional digital experiences with creativity and passion',
 };
 
