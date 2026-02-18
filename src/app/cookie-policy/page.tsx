@@ -1,33 +1,38 @@
 import PolicyLayout from "@/components/PolicyLayout";
+import type {Metadata} from "next";
 
 const SECTIONS = [
 	{
 		id: "definition",
-		title: "De Natura Cookiorum",
-		body: "Cookia sunt parva fragmenta informationis quae in instrumento tuo servantur ad functionem situs et memoriam usus conservandam.",
+		title: "Lorem ipsum",
+		body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget justo sagittis, suscipit massa nec, varius dolor. ",
 	},
 	{
 		id: "types",
-		title: "Genera Cookiorum",
-		body: "Hoc situs utitur cookiis essentialibus, analyticis, praelationis, et securitatis ad operationem ordinatam praestandam.",
+		title: "Lorem ipsum",
+		body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget justo sagittis, suscipit massa nec, varius dolor. ",
 	},
 	{
 		id: "purpose",
-		title: "Finis Usus",
-		body: "Cookia ad sessiones conservandas, usum analysandum, et experientiam usoris meliorandam adhibentur.",
+		title: "Lorem ipsum",
+		body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget justo sagittis, suscipit massa nec, varius dolor. ",
 	},
 	{
 		id: "management",
-		title: "Administratio Cookiorum",
-		body: "Usor potest cookia per configurationes navigatoris sui delere vel inhibere ad libitum.",
+		title: "Lorem ipsum",
+		body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget justo sagittis, suscipit massa nec, varius dolor. ",
 	},
 	{
 		id: "third-party",
-		title: "Cookia Partium Tertiarum",
-		body: "Servitia externa possunt propria cookia imponere, quorum administratio a nobis non regitur.",
+		title: "Lorem ipsum",
+		body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget justo sagittis, suscipit massa nec, varius dolor. ",
 	},
 ];
 
+export const metadata: Metadata = {
+	title: 'Cookie Policy',
+	description: 'Legal information about cookies on this website.',
+};
 
 export default function CookiePolicyPage() {
 	return (

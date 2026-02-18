@@ -6,7 +6,7 @@ import Main from '@/components/layout/Main';
 import React from "react";
 
 export const metadata: Metadata = {
-	title: 'About Us | Temper MC',
+	title: 'About Us',
 	description: 'Learn about the team and mission behind Temper MC — Rust-powered Minecraft server software.',
 };
 
@@ -27,7 +27,7 @@ interface GitHubContributor {
 async function getContributors(): Promise<GitHubContributor[]> {
 	try {
 		const res = await fetch(
-			`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contributors?per_page=12&anon=false`,
+			`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contributors?anon=false`,
 			{
 				headers: {
 					Accept: 'application/vnd.github+json',
@@ -79,11 +79,11 @@ export default async function AboutPage() {
 							Our Story
 						</p>
 						<h1 className="hero-header mb-6 animate-slide-up">
-							Quisque semper turpis <br/>eu mauris maximus rhoncus.
+							Lorem ipsum dolor sit amet, <br/>consectetur adipiscing elit.
 						</h1>
 						<p className="text-xl text-text-secondary leading-relaxed animate-slide-up animate-delay-100">
-							Ut fringilla lorem leo, quis molestie lectus condimentum et. Curabitur volutpat, elit ac
-							facilisis sagittis, magna odio commodo erat, ac varius erat felis sagittis dolor.
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget justo sagittis, suscipit
+							massa nec, varius dolor. Morbi lacinia ante id massa interdum feugiat.
 						</p>
 					</div>
 				</section>
@@ -127,13 +127,13 @@ export default async function AboutPage() {
 							</p>
 							<blockquote
 								className="text-2xl md:text-3xl font-display font-semibold leading-snug text-text-primary mb-6">
-								"Nam malesuada, purus ut porta fringilla, sapien libero venenatis enim, sit amet congue
-								dolor dolor et neque."
+								"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget justo sagittis,
+								suscipit massa nec, varius dolor."
 							</blockquote>
 							<p className="text-text-secondary leading-relaxed">
-								Proin lorem tortor, tincidunt a ullamcorper sit amet, dapibus sed velit. Nunc accumsan
-								libero at ante cursus feugiat. Sed vestibulum sagittis enim in sodales. Aliquam metus
-								massa, venenatis ac sollicitudin ac, auctor et erat.
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget justo sagittis,
+								suscipit massa nec, varius dolor. Morbi lacinia ante id massa interdum feugiat. Proin
+								vitae lobortis nulla. In hac habitasse platea dictumst.
 							</p>
 						</div>
 					</div>
@@ -262,8 +262,9 @@ export default async function AboutPage() {
 							Want to contribute?
 						</h2>
 						<p className="text-lg mb-8 max-w-xl mx-auto text-text-secondary">
-							Temper MC is fully open source. Whether you're fixing a bug, writing docs,
-							or building the next big feature — we'd love your help.
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget justo sagittis, suscipit
+							massa nec, varius dolor. Morbi lacinia ante id massa interdum feugiat. Proin vitae lobortis
+							nulla. In hac habitasse platea dictumst. Aliquam et pellentesque magna.
 						</p>
 						<div className="flex flex-wrap items-center justify-center gap-4">
 							<a

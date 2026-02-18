@@ -54,7 +54,7 @@ export default async function DownloadPage() {
 						Get Temper MC
 					</h1>
 					<p className="text-lg text-[var(--color-text-secondary)] max-w-xl mx-auto animate-slide-up animate-delay-100">
-						Download the latest release or browse previous versions below.
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget justo sagittis, suscipit massa nec, varius dolor.
 						{latest && (
 							<> Current stable:{' '}
 								<span className="font-mono font-semibold" style={{color: 'var(--color-primary)'}}>
@@ -68,7 +68,7 @@ export default async function DownloadPage() {
 				{releases.length === 0 ? (
 					<div className="card text-center py-20">
 						<p className="text-[var(--color-text-muted)] mb-4 text-lg">
-							Couldn't load releases right now.
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 						</p>
 						<a
 							href={`https://github.com/${REPO_OWNER}/${REPO_NAME}/releases`}
