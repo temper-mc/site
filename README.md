@@ -21,30 +21,6 @@ This repository contains the source code for the Temper website.
 * **Discord Community:** **[Join our Discord](https://discord.gg/6QPZgUy4sA)**
 * **GitHub Repository:** **[temper-mc/temper](https://github.com/temper-mc/temper)**
 
-### Contributing Guide
-Information and guidelines for developers who want to contribute to the Temper project.
-
-
-## 🚀 Getting Started
-
-### Prerequisites
-
-- Node.js
-- bun
-
-## 🛠️ Development
-
-We welcome contributions! If you'd like to contribute to FerrumC, please follow these steps:
-
-1. Fork the repository
-2. Create a new branch for your feature
-3. Implement your changes
-4. Write or update tests as necessary
-5. Submit a pull request
-
-_Please_ join our [Discord server](https://discord.gg/6QPZgUy4sA) to get help or discuss the project!
-Also have a look at our [CONTRIBUTING.md](CONTRIBUTING.md) file for more information.
-
 ## License
 
 FerrumC was licensed under the MIT License, but Temper has moved to the GNU General Public License v3.0 (GPL-3.0) to
