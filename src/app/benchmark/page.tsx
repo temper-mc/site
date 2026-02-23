@@ -3,13 +3,92 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import Main from '@/components/layout/Main';
 import BenchmarkCharts from '@/components/BenchmarkCharts';
+import React from "react";
 
 export const metadata: Metadata = {
 	title: 'Benchmarks',
 	description: 'Performance benchmarks comparing Temper MC against Vanilla, Paper, and Purpur.',
 };
 
-const SERVERS: Server[] = []
+// The Data here, DOES NOT represent actual data and only exists as Demo Data for testing.
+const SERVERS: Server[] =  [
+	// {
+	// 	key: 'temper',
+	// 	label: 'Temper',
+	// 	color: '#6366f1',
+	// 	start_up_time: 4.2,
+	// 	memory_usage: 820,
+	// 	chunks: 510,
+	// 	cpu: 38,
+	// 	capacity: 520,
+	// 	tps: [
+	// 		{ players: 0,   tps_value: 20.0 },
+	// 		{ players: 50,  tps_value: 19.8 },
+	// 		{ players: 100, tps_value: 19.5 },
+	// 		{ players: 150, tps_value: 19.1 },
+	// 		{ players: 200, tps_value: 18.6 },
+	// 		{ players: 250, tps_value: 18.0 },
+	// 		{ players: 300, tps_value: 17.2 },
+	// 	],
+	// },
+	// {
+	// 	key: 'paper',
+	// 	label: 'Paper',
+	// 	color: '#10b981',
+	// 	start_up_time: 7.1,
+	// 	memory_usage: 1050,
+	// 	chunks: 380,
+	// 	cpu: 55,
+	// 	capacity: 380,
+	// 	tps: [
+	// 		{ players: 0,   tps_value: 20.0 },
+	// 		{ players: 50,  tps_value: 19.5 },
+	// 		{ players: 100, tps_value: 18.8 },
+	// 		{ players: 150, tps_value: 17.9 },
+	// 		{ players: 200, tps_value: 16.5 },
+	// 		{ players: 250, tps_value: 14.8 },
+	// 		{ players: 300, tps_value: 12.1 },
+	// 	],
+	// },
+	// {
+	// 	key: 'spigot',
+	// 	label: 'Spigot',
+	// 	color: '#f59e0b',
+	// 	start_up_time: 9.4,
+	// 	memory_usage: 1280,
+	// 	chunks: 290,
+	// 	cpu: 72,
+	// 	capacity: 220,
+	// 	tps: [
+	// 		{ players: 0,   tps_value: 20.0 },
+	// 		{ players: 50,  tps_value: 19.0 },
+	// 		{ players: 100, tps_value: 17.2 },
+	// 		{ players: 150, tps_value: 14.5 },
+	// 		{ players: 200, tps_value: 11.0 },
+	// 		{ players: 250, tps_value: 7.8  },
+	// 		{ players: 300, tps_value: 4.2  },
+	// 	],
+	// },
+	// {
+	// 	key: 'vanilla',
+	// 	label: 'Vanilla',
+	// 	color: '#ef4444',
+	// 	start_up_time: 14.8,
+	// 	memory_usage: 1420,
+	// 	chunks: 180,
+	// 	cpu: 91,
+	// 	capacity: 120,
+	// 	tps: [
+	// 		{ players: 0,   tps_value: 20.0 },
+	// 		{ players: 50,  tps_value: 17.5 },
+	// 		{ players: 100, tps_value: 13.2 },
+	// 		{ players: 150, tps_value: 8.9  },
+	// 		{ players: 200, tps_value: 5.1  },
+	// 		{ players: 250, tps_value: 2.4  },
+	// 		{ players: 300, tps_value: 1.0  },
+	// 	],
+	// },
+];
 
 // Summary stats shown in the hero
 const HERO_STATS = [
