@@ -2,18 +2,16 @@
 
 import React from 'react';
 import {
-	ResponsiveContainer,
-	LineChart,
-	Line,
-	BarChart,
 	Bar,
+	BarChart,
+	CartesianGrid,
+	Legend,
+	Line,
+	LineChart,
+	ResponsiveContainer,
+	Tooltip,
 	XAxis,
 	YAxis,
-	CartesianGrid,
-	Tooltip,
-	Legend,
-	ReferenceLine,
-	Cell,
 } from 'recharts';
 
 /* ─── Types ───────────────────────────────────────────── */
@@ -81,12 +79,12 @@ function Section({
 			<div className="flex items-center gap-3 mb-4">
 				<div
 					className="w-1 h-6 rounded-full"
-					style={{ background: gradient }}
+					style={{background: gradient}}
 				/>
 
 				<h2
 					className="font-display font-semibold text-xl"
-					style={{ color: 'var(--color-text-primary)' }}
+					style={{color: 'var(--color-text-primary)'}}
 				>
 					{title}
 				</h2>
@@ -101,13 +99,11 @@ function Section({
 
 function SingleBarChart({
 	                        data,
-	                        unit,
 	                        suffix = '',
 	                        lowerBetter = false,
 	                        domain,
                         }: {
 	data: BarPoint[];
-	unit: string;
 	suffix?: string;
 	lowerBetter?: boolean;
 	domain?: [number, number];
@@ -117,7 +113,7 @@ function SingleBarChart({
 			<BarChart
 				data={data}
 				layout="vertical"
-				margin={{ top: 0, right: 40, left: 8, bottom: 0 }}
+				margin={{top: 0, right: 40, left: 8, bottom: 0}}
 			>
 				<CartesianGrid
 					horizontal={false}
@@ -144,30 +140,40 @@ function SingleBarChart({
 				/>
 
 				<Tooltip
+					cursor={{fill: 'var(--color-border)', opacity: 0.3}}
 					contentStyle={TOOLTIP_STYLE}
-					cursor={{
-						fill: 'var(--color-border)',
-						opacity: 0.5,
+					labelStyle={{
+						color: 'var(--color-text-muted)',
+						borderBottom: '1px solid var(--color-border)',
+						paddingBottom: '4px'
 					}}
-					formatter={(v?: number) => {
-						if (v == null) return ['', ''];
-						return [`${v}${suffix} ${unit}`, ''];
-					}}
+					itemStyle={{color: 'inherit'}}
+					labelFormatter={() => 'Server'}
+					formatter={(v, _, props) => [`${v}${suffix}`, props.payload.server]}
+
 				/>
 
 				<Bar
 					dataKey="value"
 					radius={[0, 6, 6, 0]}
 					maxBarSize={28}
-				>
-					{data.map((entry) => (
-						<Cell
-							key={entry.server}
-							fill={entry.fill}
-							opacity={0.9}
-						/>
-					))}
-				</Bar>
+					shape={(props: any) => {
+						const {x, y, width, height, index} = props;
+						const entry = data[index];
+						return (
+							<rect
+								x={x}
+								y={y}
+								width={width}
+								height={height}
+								fill={entry.fill}
+								opacity={0.9}
+								rx={6}
+								ry={6}
+							/>
+						);
+					}}
+				/>
 			</BarChart>
 		</ResponsiveContainer>
 	);
@@ -185,7 +191,7 @@ function serverToBarPoint(servers: Server[], key: keyof Server): BarPoint[] {
 
 /* ─── Main export ─────────────────────────────────────── */
 
-export default function BenchmarkCharts({ servers }: Props) {
+export default function BenchmarkCharts({servers}: Props) {
 	return (
 		<div className="space-y-2">
 
@@ -202,7 +208,7 @@ export default function BenchmarkCharts({ servers }: Props) {
 				<ResponsiveContainer width="100%" height={300}>
 					<LineChart
 						data={servers.map((v) => v.tps)}
-						margin={{ top: 4, right: 16, left: 0, bottom: 0 }}
+						margin={{top: 4, right: 16, left: 0, bottom: 0}}
 					>
 						<CartesianGrid
 							stroke={GRID_STROKE}
@@ -233,20 +239,6 @@ export default function BenchmarkCharts({ servers }: Props) {
 								angle: -90,
 								position: 'insideLeft',
 								style: AXIS_STYLE,
-							}}
-						/>
-
-						<ReferenceLine
-							y={20}
-							stroke="var(--color-surface)"
-							strokeDasharray="4 4"
-							label={{
-								value: 'Perfect',
-								position: 'right',
-								style: {
-									...AXIS_STYLE,
-									fill: 'var(--color-surface)',
-								},
 							}}
 						/>
 
@@ -304,8 +296,7 @@ export default function BenchmarkCharts({ servers }: Props) {
 
 					<SingleBarChart
 						data={serverToBarPoint(servers, 'start_up_time')}
-						unit="seconds"
-						suffix="s"
+						suffix=" s"
 						lowerBetter
 						domain={[0, 16]}
 					/>
@@ -321,7 +312,6 @@ export default function BenchmarkCharts({ servers }: Props) {
 
 					<SingleBarChart
 						data={serverToBarPoint(servers, 'memory_usage')}
-						unit="MB"
 						suffix=" MB"
 						lowerBetter
 						domain={[0, 1500]}
@@ -338,7 +328,7 @@ export default function BenchmarkCharts({ servers }: Props) {
 
 					<SingleBarChart
 						data={serverToBarPoint(servers, 'chunks')}
-						unit="chunks/s"
+						suffix=" chunks/s"
 						domain={[0, 520]}
 					/>
 				</Section>
@@ -353,7 +343,6 @@ export default function BenchmarkCharts({ servers }: Props) {
 
 					<SingleBarChart
 						data={serverToBarPoint(servers, 'cpu')}
-						unit="%"
 						suffix="%"
 						lowerBetter
 						domain={[0, 100]}
@@ -373,7 +362,7 @@ export default function BenchmarkCharts({ servers }: Props) {
 
 				<SingleBarChart
 					data={serverToBarPoint(servers, 'capacity')}
-					unit="players"
+					suffix=" players"
 					domain={[0, 550]}
 				/>
 			</Section>
