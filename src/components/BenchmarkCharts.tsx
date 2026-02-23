@@ -20,7 +20,7 @@ import {
 
 interface TPSData {
 	players: number;
-	time_stamp: number;
+	tps_value: number;
 }
 
 interface Server {
@@ -186,6 +186,15 @@ function serverToBarPoint(servers: Server[], key: keyof Server): BarPoint[] {
 /* ─── Main export ─────────────────────────────────────── */
 
 export default function BenchmarkCharts({ servers }: Props) {
+	const tpsChartData = servers[0]?.tps.map((_, i) => {
+		const point: Record<string, number> = {
+			players: servers[0].tps[i].players,
+		};
+		servers.forEach((s) => {
+			point[s.key] = s.tps[i].tps_value;
+		});
+		return point;
+	});
 	return (
 		<div className="space-y-2">
 
@@ -201,7 +210,7 @@ export default function BenchmarkCharts({ servers }: Props) {
 
 				<ResponsiveContainer width="100%" height={300}>
 					<LineChart
-						data={servers.map((v) => v.tps)}
+						data={tpsChartData}
 						margin={{ top: 4, right: 16, left: 0, bottom: 0 }}
 					>
 						<CartesianGrid
@@ -229,7 +238,7 @@ export default function BenchmarkCharts({ servers }: Props) {
 							tickLine={false}
 							axisLine={false}
 							label={{
-								value: 'TPS',
+								value: 'tps_value',
 								angle: -90,
 								position: 'insideLeft',
 								style: AXIS_STYLE,
