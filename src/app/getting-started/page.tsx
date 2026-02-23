@@ -10,7 +10,7 @@ import CodeBlock from "@/components/gettingstarted/CodeBlock";
 import Note from "@/components/gettingstarted/Note";
 
 export const metadata: Metadata = {
-	title: 'Getting Started | Temper MC',
+	title: 'Getting Started',
 	description: 'Getting started with Temper MC. Install, configure, and run your server in minutes.',
 };
 
@@ -28,11 +28,11 @@ export default function GettingStartedPage() {
 					<div className="max-w-3xl mx-auto text-center">
 						<SectionLabel>Documentation</SectionLabel>
 						<h1 className="hero-header mb-5 animate-slide-up">
-							Get up and running
+							Lorem ipsum dolor sit amet
 						</h1>
 						<p className="text-lg text-[var(--color-text-secondary)] leading-relaxed animate-slide-up animate-delay-100">
-							Whether you're a server owner looking for easy replacement or a developer
-							wanting to contribute — this guide has you covered.
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget justo sagittis, suscipit
+							massa nec, varius dolor.
 						</p>
 
 						{/* Quick jump */}
@@ -59,10 +59,10 @@ export default function GettingStartedPage() {
 					<div className="flex items-center gap-3 mb-8">
 						<Divider gradient="linear-gradient(to bottom, var(--color-surface), var(--color-secondary))"/>
 						<div>
-							<SectionLabel>Server Owners</SectionLabel>
-							<SectionHeading>Running Temper MC</SectionHeading>
+							<SectionLabel>Lorem ipsum</SectionLabel>
+							<SectionHeading>Lorem ipsum</SectionHeading>
 							<p className="text-[var(--color-text-muted)] text-sm">
-								No Rust, no compilation — just download and run.
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 							</p>
 						</div>
 					</div>
@@ -70,8 +70,8 @@ export default function GettingStartedPage() {
 					<div className="card p-6 md:p-8">
 						<Step number={0} title="Bad News">
 							<p className="text-sm text-[var(--color-text-secondary)]">
-								Currently we sadly don't have pre-built binaries for you. <br/>
-								Temper is currently in development and daily we achieve more.
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br/>
+								Sed eget justo sagittis, suscipit massa nec, varius dolor.
 							</p>
 						</Step>
 					</div>
@@ -82,10 +82,10 @@ export default function GettingStartedPage() {
 					<div className="flex items-center gap-3 mb-8">
 						<Divider gradient="linear-gradient(to bottom, var(--color-info), var(--color-primary))"/>
 						<div>
-							<SectionLabel>Contributors</SectionLabel>
-							<SectionHeading>Building from source</SectionHeading>
+							<SectionLabel>Lorem ipsum</SectionLabel>
+							<SectionHeading>Lorem ipsum</SectionHeading>
 							<p className="text-[var(--color-text-muted)] text-sm">
-								Everything you need to hack on Temper MC locally.
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 							</p>
 						</div>
 					</div>
@@ -93,11 +93,11 @@ export default function GettingStartedPage() {
 					<div className="card p-6 md:p-8">
 						<Step number={1} title="Install prerequisites">
 							<p className="text-sm text-text-secondary">
-								Temper is written in Rust. Install the toolchain via <code
-								className="font-mono text-xs bg-black/10 px-1 rounded">rustup</code>:
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit. <code
+								className="font-mono text-xs bg-black/10 px-1 rounded">Lorem ipsum</code>:
 							</p>
 							<CodeBlock
-								code="curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh \nsource $HOME/.cargo/env \nrustup default stable \n"
+								code="Lorem ipsum dolor sit amet, consectetur adipiscing elit. \nSed eget justo sagittis, suscipit massa nec, varius dolor."
 								language="bash"
 								comment="install rustup"
 							/>
@@ -105,73 +105,57 @@ export default function GettingStartedPage() {
 
 						<Step number={2} title="Clone the repository">
 							<CodeBlock
-								code={
-									`git clone https://github.com/temper-mc/temper.git
-cd temper`}
+								code="Lorem ipsum dolor sit amet, consectetur adipiscing elit. \nSed eget justo sagittis, suscipit massa nec, varius dolor."
 								language="bash"
 							/>
 						</Step>
 
 						<Step number={3} title="Build from source">
 							<p className="text-sm text-[var(--color-text-secondary)]">
-								Debug build (faster compile, slower runtime):
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 							</p>
 							<CodeBlock
-								code="cargo build"
+								code="Lorem ipsum"
 								language="bash"
 								comment="debug"
 							/>
 							<p className="text-sm text-[var(--color-text-secondary)]">
-								Release build (optimised, what end users get):
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 							</p>
 							<CodeBlock
-								code="cargo build --release\n# Binary at: ./target/release/temper"
+								code="Lorem ipsum dolor sit amet, consectetur adipiscing elit. "
 								language="bash"
 								comment="release"
 							/>
 							<Note type="info">
-								First build downloads and compiles all dependencies — expect a few minutes of waiting.
-								Subsequent
-								builds are incremental and much faster.
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit. \nSed eget justo sagittis,
+								suscipit massa nec, varius dolor. Morbi lacinia ante id massa interdum feugiat. Proin
+								vitae lobortis nulla.
 							</Note>
 						</Step>
 
 						<Step number={4} title="Run the dev server">
 							<CodeBlock
-								code="cargo run -- start"
+								code="Lorem ipsum dolor sit amet"
 								language="bash"
 							/>
 						</Step>
 
 						<Step number={6} title="Open a pull request">
 							<p className="text-sm text-text-secondary">
-								Before submitting, make sure everything passes:
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 							</p>
 							<CodeBlock
-								code={`cargo fmt --check      # formatting
-cargo clippy           # lints
-cargo test             # tests`}
+								code="Lorem ipsum dolor sit amet, consectetur adipiscing elit.\nSed eget justo sagittis, suscipit massa nec, varius dolor.\nMorbi lacinia ante id massa interdum feugiat.\nProin vitae lobortis nulla."
 								language="bash"
 								comment="CI checks"
 							/>
 							<p className="text-sm text-text-secondary">
-								Then push your branch and open a PR against <code
-								className="font-mono text-xs bg-black/10 px-1 rounded">main</code>.
-								See{' '}
-								<a
-									href="https://github.com/temper-mc/temper?tab=contributing-ov-file"
-									target="_blank"
-									rel="noopener noreferrer"
-									className="underline hover:text-[var(--color-primary)] transition-colors"
-								>
-									CONTRIBUTING.md
-								</a>{' '}
-								for the full guidelines.
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit
 							</p>
 							<Note type="tip">
-								Join the <a href="https://discord.gg/6QPZgUy4sA"
-								            className="underline">Discord</a> before starting on a large feature — we
-								can discuss the approach and avoid duplicate work.
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget justo sagittis,
+								suscipit massa nec, varius dolor.
 							</Note>
 						</Step>
 					</div>

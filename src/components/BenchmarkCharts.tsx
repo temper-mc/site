@@ -196,7 +196,7 @@ export default function BenchmarkCharts({ servers }: Props) {
 				gradient="linear-gradient(to right, var(--color-info), var(--color-primary))"
 			>
 				<p className="text-xs text-text-muted mb-4">
-					20 TPS = perfect. Measured with simulated player movement & chunk generation.
+					20 TPS = perfect
 				</p>
 
 				<ResponsiveContainer width="100%" height={300}>

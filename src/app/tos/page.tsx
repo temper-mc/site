@@ -1,48 +1,53 @@
 import PolicyLayout from "@/components/PolicyLayout";
+import type {Metadata} from "next";
 
 const SECTIONS = [
 	{
 		id: "acceptance",
-		title: "Acceptatio Conditionum",
-		body: "Per usum huius situs, usor omnes conditiones hic positas acceptare censetur.",
+		title: "Lorem ipsum",
+		body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget justo sagittis, suscipit massa nec, varius dolor. ",
 	},
 	{
 		id: "eligibility",
-		title: "Capacitas Iuridica",
-		body: "Usor debet capacitatem legalem habere ad pacta obligatoria ineunda.",
+		title: "Lorem ipsum",
+		body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget justo sagittis, suscipit massa nec, varius dolor. ",
 	},
 	{
 		id: "conduct",
-		title: "Modus Utendi",
-		body: "Usor convenit se a praxi illicita, fraudulenta, vel nociva abstenturum esse.",
+		title: "Lorem ipsum",
+		body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget justo sagittis, suscipit massa nec, varius dolor. ",
 	},
 	{
 		id: "accounts",
-		title: "Rationes Usoris",
-		body: "Usor solus responsabilis est pro securitate credentiarum suarum.",
+		title: "Lorem ipsum",
+		body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget justo sagittis, suscipit massa nec, varius dolor. ",
 	},
 	{
 		id: "intellectual",
-		title: "Proprietas Intellectualis",
-		body: "Omnia opera, textus, et materiae in hoc situ iure proprietatis proteguntur.",
+		title: "Lorem ipsum",
+		body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget justo sagittis, suscipit massa nec, varius dolor. ",
 	},
 	{
 		id: "liability",
-		title: "Limitatio Responsabilitatis",
-		body: "Nos non respondemus pro damnis indirectis vel consequentibus ex usu ortis.",
+		title: "Lorem ipsum",
+		body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget justo sagittis, suscipit massa nec, varius dolor. ",
 	},
 	{
 		id: "termination",
-		title: "Terminatio",
-		body: "Accessus usoris suspendi vel terminari potest in casu violationis harum conditionum.",
+		title: "Lorem ipsum",
+		body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget justo sagittis, suscipit massa nec, varius dolor. ",
 	},
 	{
 		id: "changes",
-		title: "Mutationes Conditionum",
-		body: "Conditiones hae mutari possunt sine praevia notificatione ad arbitrium nostrum.",
+		title: "Lorem ipsum",
+		body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget justo sagittis, suscipit massa nec, varius dolor. ",
 	},
 ];
 
+export const metadata: Metadata = {
+	title: 'Terms of Service',
+	description: 'Terms of Service of Temper MC',
+};
 
 export default function TermsPage() {
 	return (

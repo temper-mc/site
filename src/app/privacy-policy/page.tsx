@@ -1,38 +1,43 @@
 import PolicyLayout from "@/components/PolicyLayout";
+import type {Metadata} from "next";
 
 const SECTIONS = [
 	{
 		id: "collection",
-		title: "Collectio Informationum",
-		body: "Informationes personales colliguntur solum cum necessariae sunt ad officia nostra praestanda.",
+		title: "Lorem ipsum",
+		body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget justo sagittis, suscipit massa nec, varius dolor. ",
 	},
 	{
 		id: "usage",
-		title: "Usus Datorum",
-		body: "Data collecta ad administrationem, sustentationem, et progressionem servitiorum adhibentur.",
+		title: "Lorem ipsum",
+		body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget justo sagittis, suscipit massa nec, varius dolor. ",
 	},
 	{
 		id: "storage",
-		title: "Conservatio Datorum",
-		body: "Informationes secure servantur et tantisper retinentur quantum lex vel necessitas postulat.",
+		title: "Lorem ipsum",
+		body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget justo sagittis, suscipit massa nec, varius dolor. ",
 	},
 	{
 		id: "sharing",
-		title: "Communicatio Datorum",
-		body: "Data personalia non venduntur nec locantur partibus tertiis nisi lege exigente.",
+		title: "Lorem ipsum",
+		body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget justo sagittis, suscipit massa nec, varius dolor. ",
 	},
 	{
 		id: "rights",
-		title: "Iura Usoris",
-		body: "Usor ius habet accessus, correctionis, et deletionis datorum personalium.",
+		title: "Lorem ipsum",
+		body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget justo sagittis, suscipit massa nec, varius dolor. ",
 	},
 	{
 		id: "contact",
-		title: "Contactus",
-		body: "Ad quaestiones de secreto pertinentes, usor nos per canales officiales contingere potest.",
+		title: "Lorem ipsum",
+		body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget justo sagittis, suscipit massa nec, varius dolor. ",
 	},
 ];
 
+export const metadata: Metadata = {
+	title: 'Privacy Policy',
+	description: 'Privacy Policy of Temper MC.',
+};
 
 export default function PrivacyPolicyPage() {
 	return (
