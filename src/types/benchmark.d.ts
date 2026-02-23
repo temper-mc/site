@@ -12,6 +12,6 @@ interface Server {
 
 interface TPSData {
 	players: number;
-	time_stamp: number;
+	tps_value: number;
 }
 
