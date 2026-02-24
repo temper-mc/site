@@ -24,13 +24,13 @@ export default function GettingStartedPage() {
 			<Main>
 
 				{/* ── Hero ── */}
-				<section className="mb-20 animate-fade-in">
+				<section className="mb-12 sm:mb-20 animate-fade-in px-4 sm:px-0">
 					<div className="max-w-3xl mx-auto text-center">
 						<SectionLabel>Documentation</SectionLabel>
-						<h1 className="hero-header mb-5 animate-slide-up">
+						<h1 className="hero-header mb-5 animate-slide-up text-3xl sm:text-4xl md:text-5xl lg:text-6xl">
 							Lorem ipsum dolor sit amet
 						</h1>
-						<p className="text-lg text-[var(--color-text-secondary)] leading-relaxed animate-slide-up animate-delay-100">
+						<p className="text-base sm:text-lg text-[var(--color-text-secondary)] leading-relaxed animate-slide-up animate-delay-100">
 							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget justo sagittis, suscipit
 							massa nec, varius dolor.
 						</p>
@@ -40,13 +40,13 @@ export default function GettingStartedPage() {
 							className="flex flex-wrap items-center justify-center gap-3 mt-8 animate-slide-up animate-delay-200">
 							<a
 								href="#user"
-								className="btn-secondary text-sm"
+								className="btn-secondary text-sm w-full sm:w-auto"
 							>
 								I'm a server owner
 							</a>
 							<a
 								href="#dev"
-								className="btn-primary text-sm"
+								className="btn-primary text-sm w-full sm:w-auto"
 							>
 								I'm a developer
 							</a>
@@ -55,9 +55,11 @@ export default function GettingStartedPage() {
 				</section>
 
 				{/* ── User guide ── */}
-				<section id="user" className="mb-20 scroll-mt-28 animate-slide-up">
-					<div className="flex items-center gap-3 mb-8">
-						<Divider gradient="linear-gradient(to bottom, var(--color-surface), var(--color-secondary))"/>
+				<section id="user" className="mb-12 sm:mb-20 scroll-mt-28 animate-slide-up px-4 sm:px-0">
+					<div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 mb-8">
+						<div className="hidden sm:block">
+							<Divider gradient="linear-gradient(to bottom, var(--color-surface), var(--color-secondary))"/>
+						</div>
 						<div>
 							<SectionLabel>Lorem ipsum</SectionLabel>
 							<SectionHeading>Lorem ipsum</SectionHeading>
@@ -67,7 +69,7 @@ export default function GettingStartedPage() {
 						</div>
 					</div>
 
-					<div className="card p-6 md:p-8">
+					<div className="card p-4 sm:p-6 md:p-8">
 						<Step number={0} title="Bad News">
 							<p className="text-sm text-[var(--color-text-secondary)]">
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br/>
@@ -78,9 +80,11 @@ export default function GettingStartedPage() {
 				</section>
 
 				{/* ── Dev guide ── */}
-				<section id="dev" className="mb-16 scroll-mt-28 animate-slide-up animate-delay-100">
-					<div className="flex items-center gap-3 mb-8">
-						<Divider gradient="linear-gradient(to bottom, var(--color-info), var(--color-primary))"/>
+				<section id="dev" className="mb-12 sm:mb-16 scroll-mt-28 animate-slide-up animate-delay-100 px-4 sm:px-0">
+					<div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 mb-8">
+						<div className="hidden sm:block">
+							<Divider gradient="linear-gradient(to bottom, var(--color-info), var(--color-primary))"/>
+						</div>
 						<div>
 							<SectionLabel>Lorem ipsum</SectionLabel>
 							<SectionHeading>Lorem ipsum</SectionHeading>
@@ -90,7 +94,7 @@ export default function GettingStartedPage() {
 						</div>
 					</div>
 
-					<div className="card p-6 md:p-8">
+					<div className="card p-4 sm:p-6 md:p-8">
 						<Step number={1} title="Install prerequisites">
 							<p className="text-sm text-text-secondary">
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit. <code
@@ -163,7 +167,7 @@ export default function GettingStartedPage() {
 
 				{/* ── Need help CTA ── */}
 				<section
-					className="relative overflow-hidden rounded-3xl border border-[var(--color-border-hover)] p-10 text-center">
+					className="relative overflow-hidden rounded-2xl sm:rounded-3xl border border-[var(--color-border-hover)] p-6 sm:p-10 text-center mx-4 sm:mx-0">
 					<div
 						className="absolute inset-0 -z-10"
 						style={{background: 'linear-gradient(135deg, color-mix(in srgb, var(--color-bg-gradient-start) 25%, var(--color-bg-secondary)), color-mix(in srgb, var(--color-bg-gradient-end) 20%, var(--color-bg-secondary)))'}}
@@ -175,18 +179,18 @@ export default function GettingStartedPage() {
 						className="absolute -bottom-10 -right-10 w-36 h-36 rounded-full blur-3xl opacity-20 pointer-events-none -z-10"
 						style={{background: 'var(--color-accent)'}}/>
 
-					<h2 className="text-2xl md:text-3xl font-display font-bold mb-3 text-[var(--color-text-primary)]">
+					<h2 className="text-xl sm:text-2xl md:text-3xl font-display font-bold mb-3 text-[var(--color-text-primary)]">
 						Stuck? We've got you.
 					</h2>
-					<p className="text-[var(--color-text-secondary)] mb-8 max-w-md mx-auto">
+					<p className="text-[var(--color-text-secondary)] mb-8 max-w-md mx-auto text-sm sm:text-base">
 						Ask in Discord, open a GitHub issue, or browse the full documentation.
 					</p>
-					<div className="flex flex-wrap items-center justify-center gap-4">
+					<div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
 						<a
 							href="https://discord.gg/6QPZgUy4sA"
 							target="_blank"
 							rel="noopener noreferrer"
-							className="btn-cta-primary"
+							className="btn-cta-primary w-full sm:w-auto"
 						>
 							Ask on Discord
 						</a>
@@ -194,7 +198,7 @@ export default function GettingStartedPage() {
 							href="https://github.com/temper-mc/temper/issues"
 							target="_blank"
 							rel="noopener noreferrer"
-							className="btn-cta-outline"
+							className="btn-cta-outline w-full sm:w-auto"
 						>
 							Open an issue
 						</a>
