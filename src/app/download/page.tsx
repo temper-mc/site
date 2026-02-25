@@ -1,8 +1,8 @@
-import type {Metadata} from 'next';
+import type { Metadata } from 'next';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import Main from '@/components/layout/Main';
-import {FaExternalLinkAlt} from "react-icons/fa";
+import { FaExternalLinkAlt } from "react-icons/fa";
 import ReleaseCard from "@/components/download/ReleaseCard";
 
 export const metadata: Metadata = {
@@ -16,13 +16,17 @@ const MAX_RELEASES = 6;
 
 
 async function getReleases(): Promise<Release[]> {
+	let headers: any = {
+		Accept: 'application/vnd.github+json',
+	};
+	if (process.env.GH_TOKEN) {
+		headers['Authorization'] = `token ${process.env.GH_TOKEN}`;
+	}
 	const res = await fetch(
 		`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/releases?per_page=${MAX_RELEASES}`,
 		{
-			headers: {
-				Accept: 'application/vnd.github+json',
-			},
-			next: {revalidate: 3600},
+			headers: headers,
+			next: { revalidate: 3600 },
 		}
 	);
 	if (!res.ok) throw new Error(`GitHub API ${res.status}`);
@@ -38,7 +42,7 @@ export default async function DownloadPage() {
 
 	return (
 		<div className="min-h-screen">
-			<Header/>
+			<Header />
 
 			<Main>
 
@@ -46,7 +50,7 @@ export default async function DownloadPage() {
 				<section className="mb-16 text-center animate-fade-in">
 					<p
 						className="inline-block text-sm font-display font-semibold tracking-widest uppercase mb-4 px-4 py-1.5 rounded-full border border-[var(--color-border-hover)]"
-						style={{color: 'var(--color-info)'}}
+						style={{ color: 'var(--color-info)' }}
 					>
 						Download
 					</p>
@@ -54,10 +58,10 @@ export default async function DownloadPage() {
 						Get Temper MC
 					</h1>
 					<p className="text-lg text-[var(--color-text-secondary)] max-w-xl mx-auto animate-slide-up animate-delay-100">
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget justo sagittis, suscipit massa nec, varius dolor.
+						Get started with Temper by downloading the latest release from our GitHub repository.
 						{latest && (
 							<> Current stable:{' '}
-								<span className="font-mono font-semibold" style={{color: 'var(--color-primary)'}}>
+								<span className="font-mono font-semibold" style={{ color: 'var(--color-primary)' }}>
 									{latest.tag_name}
 								</span>
 							</>
@@ -68,7 +72,7 @@ export default async function DownloadPage() {
 				{releases.length === 0 ? (
 					<div className="card text-center py-20">
 						<p className="text-[var(--color-text-muted)] mb-4 text-lg">
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+							Currently no releases are available. Please check back later or visit our GitHub repository for the latest updates.
 						</p>
 						<a
 							href={`https://github.com/${REPO_OWNER}/${REPO_NAME}/releases`}
@@ -88,13 +92,13 @@ export default async function DownloadPage() {
 								<div className="flex items-center gap-3 mb-4">
 									<div
 										className="w-1 h-6 rounded-full"
-										style={{background: 'linear-gradient(to bottom, var(--color-info), var(--color-primary))'}}
+										style={{ background: 'linear-gradient(to bottom, var(--color-info), var(--color-primary))' }}
 									/>
 									<h2 className="font-display font-semibold text-xl text-[var(--color-text-primary)]">
 										Latest Release
 									</h2>
 								</div>
-								<ReleaseCard release={latest} isLatest={true}/>
+								<ReleaseCard release={latest} isLatest={true} />
 							</section>
 						)}
 
@@ -104,7 +108,7 @@ export default async function DownloadPage() {
 								<div className="flex items-center gap-3 mb-4 mt-8">
 									<div
 										className="w-1 h-6 rounded-full"
-										style={{background: 'linear-gradient(to bottom, var(--color-surface), var(--color-secondary))'}}
+										style={{ background: 'linear-gradient(to bottom, var(--color-surface), var(--color-secondary))' }}
 									/>
 									<h2 className="font-display font-semibold text-xl text-text-primary">
 										Previous Releases
@@ -115,9 +119,9 @@ export default async function DownloadPage() {
 										<div
 											key={release.id}
 											className="animate-slide-up"
-											style={{animationDelay: `${(i + 3) * 75}ms`}}
+											style={{ animationDelay: `${(i + 3) * 75}ms` }}
 										>
-											<ReleaseCard release={release} isLatest={false}/>
+											<ReleaseCard release={release} isLatest={false} />
 										</div>
 									))}
 								</div>
@@ -131,10 +135,10 @@ export default async function DownloadPage() {
 								target="_blank"
 								rel="noopener noreferrer"
 								className="text-sm font-display font-medium inline-flex items-center gap-1.5 transition-opacity duration-200 hover:opacity-70"
-								style={{color: 'var(--color-info)'}}
+								style={{ color: 'var(--color-info)' }}
 							>
 								View all releases on GitHub
-								<FaExternalLinkAlt/>
+								<FaExternalLinkAlt />
 							</a>
 						</div>
 					</div>
@@ -142,7 +146,7 @@ export default async function DownloadPage() {
 
 			</Main>
 
-			<Footer/>
+			<Footer />
 		</div>
 	);
 }

@@ -66,10 +66,10 @@ const TOOLTIP_STYLE: React.CSSProperties = {
 /* ─── Section wrapper ─────────────────────────────────── */
 
 function Section({
-	                 title,
-	                 gradient,
-	                 children,
-                 }: {
+	title,
+	gradient,
+	children,
+}: {
 	title: string;
 	gradient: string;
 	children: React.ReactNode;
@@ -79,12 +79,12 @@ function Section({
 			<div className="flex items-center gap-3 mb-4">
 				<div
 					className="w-1 h-6 rounded-full"
-					style={{background: gradient}}
+					style={{ background: gradient }}
 				/>
 
 				<h2
 					className="font-display font-semibold text-xl"
-					style={{color: 'var(--color-text-primary)'}}
+					style={{ color: 'var(--color-text-primary)' }}
 				>
 					{title}
 				</h2>
@@ -98,11 +98,11 @@ function Section({
 /* ─── Shared bar chart ────────────────────────────────── */
 
 function SingleBarChart({
-	                        data,
-	                        suffix = '',
-	                        lowerBetter = false,
-	                        domain,
-                        }: {
+	data,
+	suffix = '',
+	lowerBetter = false,
+	domain,
+}: {
 	data: BarPoint[];
 	suffix?: string;
 	lowerBetter?: boolean;
@@ -113,7 +113,7 @@ function SingleBarChart({
 			<BarChart
 				data={data}
 				layout="vertical"
-				margin={{top: 0, right: 40, left: 8, bottom: 0}}
+				margin={{ top: 0, right: 40, left: 8, bottom: 0 }}
 			>
 				<CartesianGrid
 					horizontal={false}
@@ -140,14 +140,14 @@ function SingleBarChart({
 				/>
 
 				<Tooltip
-					cursor={{fill: 'var(--color-border)', opacity: 0.3}}
+					cursor={{ fill: 'var(--color-border)', opacity: 0.3 }}
 					contentStyle={TOOLTIP_STYLE}
 					labelStyle={{
 						color: 'var(--color-text-muted)',
 						borderBottom: '1px solid var(--color-border)',
 						paddingBottom: '4px'
 					}}
-					itemStyle={{color: 'inherit'}}
+					itemStyle={{ color: 'inherit' }}
 					labelFormatter={() => 'Server'}
 					formatter={(v, _, props) => [`${v}${suffix}`, props.payload.server]}
 
@@ -158,7 +158,7 @@ function SingleBarChart({
 					radius={[0, 6, 6, 0]}
 					maxBarSize={28}
 					shape={(props: any) => {
-						const {x, y, width, height, index} = props;
+						const { x, y, width, height, index } = props;
 						const entry = data[index];
 						return (
 							<rect
@@ -244,7 +244,7 @@ export default function BenchmarkCharts({ servers }: Props) {
 							tickLine={false}
 							axisLine={false}
 							label={{
-								value: 'tps_value',
+								value: 'TPS',
 								angle: -90,
 								position: 'insideLeft',
 								style: AXIS_STYLE,
@@ -300,7 +300,7 @@ export default function BenchmarkCharts({ servers }: Props) {
 					gradient="linear-gradient(to right, var(--color-accent), var(--color-info))"
 				>
 					<p className="text-xs text-text-muted mb-4">
-						Seconds to first player-ready state. Lower is better.
+						Seconds to first player-ready state, from an empty dir with only the .jar/.exe and EULA. Lower is better.
 					</p>
 
 					<SingleBarChart

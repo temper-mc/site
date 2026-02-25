@@ -1,42 +1,42 @@
 import Link from 'next/link';
-import {RiDiscordLine, RiGithubLine, RiTwitterXFill} from "react-icons/ri";
+import { RiDiscordLine, RiGithubLine, RiTwitterXFill } from "react-icons/ri";
 
 export default function Footer() {
 	const currentYear = new Date().getFullYear();
 
 	const footerLinks = {
 		software: [
-			{label: 'Download', href: '/download'},
-			{label: 'About Us', href: '/about'},
-			{label: 'Benchmarks', href: '/benchmark'},
+			{ label: 'Download', href: '/download' },
+			{ label: 'About Us', href: '/about' },
+			{ label: 'Benchmarks', href: '/benchmark' },
 		],
-		resources: [
-			{label: 'Documentation', href: '/docs'},
-			{label: 'System Requirements', href: '/docs/requirements'},
-			{label: 'FAQ', href: '/faq'},
-		],
-		legal: [
-			{label: 'Privacy Policy', href: '/privacy-policy'},
-			{label: 'Terms of Service', href: '/tos'},
-			{label: 'Cookie Policy', href: '/cookie-policy'},
-		],
+		// resources: [
+		// 	{ label: 'Documentation', href: '/docs' },
+		// 	{ label: 'System Requirements', href: '/docs/requirements' },
+		// 	{ label: 'FAQ', href: '/faq' },
+		// ],
+		// legal: [
+		// 	{ label: 'Privacy Policy', href: '/privacy-policy' },
+		// 	{ label: 'Terms of Service', href: '/tos' },
+		// 	{ label: 'Cookie Policy', href: '/cookie-policy' },
+		// ],
 	};
 
 	const socialLinks = [
 		{
 			name: 'Twitter',
 			href: 'https://twitter.com/',
-			icon: <RiTwitterXFill style={{fontSize: '1.25rem'}}/>,
+			icon: <RiTwitterXFill style={{ fontSize: '1.25rem' }} />,
 		},
 		{
 			name: 'Discord',
 			href: 'https://discord.gg/6QPZgUy4sA',
-			icon: <RiDiscordLine style={{fontSize: '1.25rem'}}/>,
+			icon: <RiDiscordLine style={{ fontSize: '1.25rem' }} />,
 		},
 		{
 			name: 'GitHub',
 			href: 'https://github.com/temper-mc/temper',
-			icon: <RiGithubLine style={{fontSize: '1.25rem'}}/>,
+			icon: <RiGithubLine style={{ fontSize: '1.25rem' }} />,
 		},
 	];
 
@@ -45,7 +45,7 @@ export default function Footer() {
 			{/* Background gradient */}
 			<div
 				className="absolute inset-0 -z-10 pointer-events-none"
-				style={{background: 'linear-gradient(to bottom, transparent, color-mix(in srgb, var(--color-info) 5%, transparent))'}}
+				style={{ background: 'linear-gradient(to bottom, transparent, color-mix(in srgb, var(--color-info) 5%, transparent))' }}
 			/>
 
 			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -60,7 +60,7 @@ export default function Footer() {
 								<div className="relative">
 									<div
 										className="absolute inset-0 rounded-2xl blur-md opacity-50"
-										style={{background: 'linear-gradient(to bottom right, var(--color-info), var(--color-surface))'}}
+										style={{ background: 'linear-gradient(to bottom right, var(--color-info), var(--color-surface))' }}
 									/>
 								</div>
 								<h2 className="font-display font-bold text-2xl text-gradient">
@@ -69,7 +69,7 @@ export default function Footer() {
 							</div>
 						</Link>
 						<p className="text-[var(--color-text-muted)] mb-6 max-w-sm leading-relaxed">
-							Vestibulum pharetra dapibus lectus vitae lobortis. Nunc commodo scelerisque lacus quis dignissim. Integer vel diam euismod, lobortis turpis non, consectetur metus.
+							A stupidly fast Minecraft server software designed to push the limits of performance, built by a team of passionate developers who believe we can always go faster, further and higher.
 						</p>
 
 						{/* Social Links */}
@@ -107,7 +107,7 @@ export default function Footer() {
 						</ul>
 					</div>
 
-					<div>
+					{/* <div>
 						<h3 className="font-display font-semibold text-[var(--color-text-primary)] mb-4">
 							Resources
 						</h3>
@@ -123,7 +123,7 @@ export default function Footer() {
 								</li>
 							))}
 						</ul>
-					</div>
+					</div> */}
 				</div>
 
 				{/* Bottom Bar */}
@@ -132,7 +132,7 @@ export default function Footer() {
 					<p className="text-sm text-[var(--color-text-muted)]">
 						© {currentYear} Temper MC. All rights reserved.
 					</p>
-					<div className="flex items-center gap-6">
+					{/* <div className="flex items-center gap-6">
 						{footerLinks.legal.map((link) => (
 							<Link
 								key={link.href}
@@ -142,7 +142,7 @@ export default function Footer() {
 								{link.label}
 							</Link>
 						))}
-					</div>
+					</div> */}
 				</div>
 			</div>
 		</footer>

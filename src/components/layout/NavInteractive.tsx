@@ -1,8 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import {useEffect, useState} from 'react';
-import {usePathname} from 'next/navigation';
+import { useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
 
 interface NavLink {
 	href: string;
@@ -14,15 +14,15 @@ interface NavInteractiveProps {
 }
 
 const routeConfig: Record<string, { ctaLabel: string; ctaHref: string }> = {
-	'/': {ctaLabel: 'Get Started', ctaHref: '/getting-started'},
-	'/docs': {ctaLabel: '', ctaHref: ''},
-	'/download': {ctaLabel: 'Join Discord', ctaHref: 'https://discord.gg/6QPZgUy4sA'},
-	'/about': {ctaLabel: 'Get Started', ctaHref: '/getting-started'},
+	'/': { ctaLabel: 'Get Started', ctaHref: '/getting-started' },
+	'/docs': { ctaLabel: '', ctaHref: '' },
+	'/download': { ctaLabel: 'Join Discord', ctaHref: 'https://discord.gg/6QPZgUy4sA' },
+	'/about': { ctaLabel: 'Get Started', ctaHref: '/getting-started' },
 };
 
-const defaultConfig = {subtitle: 'Minecraft Server', ctaLabel: 'Get Started', ctaHref: '/download'};
+const defaultConfig = { subtitle: 'Minecraft Server', ctaLabel: 'Get Started', ctaHref: '/download' };
 
-export default function NavInteractive({navLinks}: NavInteractiveProps) {
+export default function NavInteractive({ navLinks }: NavInteractiveProps) {
 	const [isScrolled, setIsScrolled] = useState(false);
 	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -57,12 +57,12 @@ export default function NavInteractive({navLinks}: NavInteractiveProps) {
 						<div className="relative w-10 h-10 shrink-0">
 							<div
 								className="absolute inset-0 rounded-2xl blur-lg opacity-40 group-hover:opacity-70 transition-opacity duration-300"
-								style={{background: 'linear-gradient(to bottom right, var(--color-info), var(--color-surface))'}}
+								style={{ background: 'linear-gradient(to bottom right, var(--color-info), var(--color-surface))' }}
 							/>
 							{/* Logo icon placeholder — swap with your <Image> */}
 							<div
 								className="relative w-full h-full rounded-2xl flex items-center justify-center text-white text-sm font-bold font-display"
-								style={{background: 'linear-gradient(to bottom right, var(--color-info), var(--color-surface))'}}
+								style={{ background: 'linear-gradient(to bottom right, var(--color-info), var(--color-surface))' }}
 							>
 								T
 							</div>
@@ -101,7 +101,7 @@ export default function NavInteractive({navLinks}: NavInteractiveProps) {
 									{isActive && (
 										<span
 											className="block mx-auto mt-0.5 w-1 h-1 rounded-full"
-											style={{backgroundColor: 'var(--color-primary)'}}
+											style={{ backgroundColor: 'var(--color-primary)' }}
 										/>
 									)}
 								</Link>
@@ -138,15 +138,15 @@ export default function NavInteractive({navLinks}: NavInteractiveProps) {
 						<div className="relative w-6 h-5 flex flex-col justify-between">
 							<span
 								className={`w-full h-0.5 rounded-full transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`}
-								style={{backgroundColor: 'var(--color-info)'}}
+								style={{ backgroundColor: 'var(--color-info)' }}
 							/>
 							<span
 								className={`w-full h-0.5 rounded-full transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0 scale-x-0' : ''}`}
-								style={{backgroundColor: 'var(--color-info)'}}
+								style={{ backgroundColor: 'var(--color-info)' }}
 							/>
 							<span
 								className={`w-full h-0.5 rounded-full transition-all duration-300 ${isMobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}
-								style={{backgroundColor: 'var(--color-info)'}}
+								style={{ backgroundColor: 'var(--color-info)' }}
 							/>
 						</div>
 					</button>
@@ -155,9 +155,8 @@ export default function NavInteractive({navLinks}: NavInteractiveProps) {
 
 			{/* Mobile Menu */}
 			<div
-				className={`lg:hidden transition-all duration-500 ease-out overflow-hidden ${
-					isMobileMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
-				}`}
+				className={`lg:hidden transition-all duration-500 ease-out overflow-hidden ${isMobileMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
+					}`}
 			>
 				<nav className="glass-effect border-t border-[var(--color-border)]">
 					<div className="max-w-7xl mx-auto px-4 py-6 space-y-2">

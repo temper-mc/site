@@ -1,4 +1,4 @@
-import type {Metadata} from 'next';
+import type { Metadata } from 'next';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import Main from '@/components/layout/Main';
@@ -11,110 +11,85 @@ export const metadata: Metadata = {
 };
 
 // The Data here, DOES NOT represent actual data and only exists as Demo Data for testing.
-const SERVERS: Server[] =  [
-	// {
-	// 	key: 'temper',
-	// 	label: 'Temper',
-	// 	color: '#6366f1',
-	// 	start_up_time: 4.2,
-	// 	memory_usage: 820,
-	// 	chunks: 510,
-	// 	cpu: 38,
-	// 	capacity: 520,
-	// 	tps: [
-	// 		{ players: 0,   tps_value: 20.0 },
-	// 		{ players: 50,  tps_value: 19.8 },
-	// 		{ players: 100, tps_value: 19.5 },
-	// 		{ players: 150, tps_value: 19.1 },
-	// 		{ players: 200, tps_value: 18.6 },
-	// 		{ players: 250, tps_value: 18.0 },
-	// 		{ players: 300, tps_value: 17.2 },
-	// 	],
-	// },
-	// {
-	// 	key: 'paper',
-	// 	label: 'Paper',
-	// 	color: '#10b981',
-	// 	start_up_time: 7.1,
-	// 	memory_usage: 1050,
-	// 	chunks: 380,
-	// 	cpu: 55,
-	// 	capacity: 380,
-	// 	tps: [
-	// 		{ players: 0,   tps_value: 20.0 },
-	// 		{ players: 50,  tps_value: 19.5 },
-	// 		{ players: 100, tps_value: 18.8 },
-	// 		{ players: 150, tps_value: 17.9 },
-	// 		{ players: 200, tps_value: 16.5 },
-	// 		{ players: 250, tps_value: 14.8 },
-	// 		{ players: 300, tps_value: 12.1 },
-	// 	],
-	// },
-	// {
-	// 	key: 'spigot',
-	// 	label: 'Spigot',
-	// 	color: '#f59e0b',
-	// 	start_up_time: 9.4,
-	// 	memory_usage: 1280,
-	// 	chunks: 290,
-	// 	cpu: 72,
-	// 	capacity: 220,
-	// 	tps: [
-	// 		{ players: 0,   tps_value: 20.0 },
-	// 		{ players: 50,  tps_value: 19.0 },
-	// 		{ players: 100, tps_value: 17.2 },
-	// 		{ players: 150, tps_value: 14.5 },
-	// 		{ players: 200, tps_value: 11.0 },
-	// 		{ players: 250, tps_value: 7.8  },
-	// 		{ players: 300, tps_value: 4.2  },
-	// 	],
-	// },
-	// {
-	// 	key: 'vanilla',
-	// 	label: 'Vanilla',
-	// 	color: '#ef4444',
-	// 	start_up_time: 14.8,
-	// 	memory_usage: 1420,
-	// 	chunks: 180,
-	// 	cpu: 91,
-	// 	capacity: 120,
-	// 	tps: [
-	// 		{ players: 0,   tps_value: 20.0 },
-	// 		{ players: 50,  tps_value: 17.5 },
-	// 		{ players: 100, tps_value: 13.2 },
-	// 		{ players: 150, tps_value: 8.9  },
-	// 		{ players: 200, tps_value: 5.1  },
-	// 		{ players: 250, tps_value: 2.4  },
-	// 		{ players: 300, tps_value: 1.0  },
-	// 	],
-	// },
+const SERVERS: Server[] = [
+	{
+		key: 'temper',
+		label: 'Temper',
+		color: '#6366f1',
+		start_up_time: 0.15,
+		memory_usage: 23.9,
+		chunks: 4166,
+		cpu: 2.5,
+		capacity: 450,
+		tps: [
+			{ players: 0, tps_value: 20.0 },
+			// { players: 10, tps_value: 20.0 },
+			{ players: 100, tps_value: 20.0 },
+			{ players: 200, tps_value: 20.0 },
+			{ players: 500, tps_value: 15.2 },
+		],
+	},
+	{
+		key: 'paper',
+		label: 'Paper',
+		color: '#2b7fff',
+		start_up_time: 28.4,
+		memory_usage: 1462.5,
+		chunks: 121.5,
+		cpu: 12.2,
+		capacity: 180,
+		tps: [
+			{ players: 0, tps_value: 20.0 },
+			// { players: 10, tps_value: 20.0 },
+			{ players: 100, tps_value: 20.0 },
+			{ players: 200, tps_value: 15.6 },
+			{ players: 200, tps_value: 0.6 },
+		],
+	},
+	{
+		key: 'purpur',
+		label: 'Purpur',
+		color: '#392955',
+		start_up_time: 29.0,
+		memory_usage: 2105.3,
+		chunks: 182,
+		cpu: 11.4,
+		capacity: 175,
+		tps: [
+			{ players: 0, tps_value: 20.0 },
+			// { players: 10, tps_value: 20.0 },
+			{ players: 100, tps_value: 20.0 },
+			{ players: 200, tps_value: 10.37 },
+			{ players: 500, tps_value: 1.31 },
+		],
+	},
 ];
 
 // Summary stats shown in the hero
 const HERO_STATS = [
-	{value: 'XXX', label: 'Speciess congregabo', sub: 'Speciess congregabo'},
-	{value: 'XXX', label: 'Gloss manducare', sub: 'Speciess congregabo'},
-	{value: 'XXX', label: 'Pess cadunt', sub: 'Speciess congregabo'},
-	{value: 'XXX', label: 'Boreass experimentum', sub: 'Speciess congregabo'},
+	{ value: '19X', label: 'Times faster chunk generation', sub: 'Than paper' },
+	{ value: '<25MB', label: 'Memory usage', sub: 'With 10 online players' },
+	{ value: '25X', label: 'TPS under heavy load', sub: '15.2 TPS with 500 players vs 0.6 on Paper' },
+	{ value: '0.025s', label: 'Startup Time', sub: 'Without initial chunk generation' },
 ];
 
 // Test environment details
 const TEST_ENV = [
-	{label: 'CPU', value: 'XXX'},
-	{label: 'RAM', value: 'XXX'},
-	{label: 'Storage', value: 'XXX'},
-	{label: 'OS', value: 'XXX'},
-	{label: 'World', value: 'XXX'},
-	{label: 'Plugins', value: 'XXX'},
-	{label: 'Java', value: 'XXX'},
-	{label: 'Temper', value: 'XXX'},
+	{ label: 'CPU', value: 'Ryzen 9 7950X3D (16 cores, 32 threads)' },
+	{ label: 'RAM', value: '64GB DDR5 (2x32GB Corsair Vengeance)' },
+	{ label: 'Storage', value: '2TB NVMe SSD (Crucial P3 Plus)' },
+	{ label: 'OS', value: 'Windows 11' },
+	{ label: 'Plugins', value: 'Chunky' },
+	{ label: 'Java', value: 'openjdk 25.0.2 (Adoptium)' },
+	{ label: 'Rust Compiler', value: '1.93.1' },
+	{ label: 'Player count benchmarker', value: 'SoulFire 2.5.4' },
 ];
 
 // ─── Page ─────────────────────────────────────────────────────
 export default function BenchmarkPage() {
 	return (
 		<div className="min-h-screen">
-			<Header/>
+			<Header />
 			<Main>
 
 				{/* ── Hero ── */}
@@ -122,17 +97,15 @@ export default function BenchmarkPage() {
 					<div className="max-w-3xl mx-auto text-center mb-14">
 						<p
 							className="inline-block text-sm font-display font-semibold tracking-widest uppercase mb-4 px-4 py-1.5 rounded-full border border-border-hover"
-							style={{color: 'var(--color-info)'}}
+							style={{ color: 'var(--color-info)' }}
 						>
 							Performance
 						</p>
 						<h1 className="hero-header mb-5 animate-slide-up">
-							Lorem ipsum
+							Benchmarks vs Paper and Purpur
 						</h1>
 						<p className="text-lg text-text-secondary leading-relaxed animate-slide-up animate-delay-100">
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget justo sagittis, suscipit
-							massa nec, varius dolor. Morbi lacinia ante id massa interdum feugiat. Proin vitae lobortis
-							nulla.
+							Here's the numbers to back up our claims. We ran Temper MC, Paper, and Purpur through a series of rigorous benchmarks to compare their performance across various metrics. From startup time to memory usage, TPS under load, and chunk generation speed, see how Temper stacks up against the competition.
 						</p>
 					</div>
 
@@ -142,7 +115,7 @@ export default function BenchmarkPage() {
 							<div key={stat.label} className="card text-center group">
 								<p
 									className="font-display font-bold text-4xl md:text-5xl mb-1 group-hover:scale-105 transition-transform duration-300 inline-block"
-									style={{color: 'var(--color-primary)'}}
+									style={{ color: 'var(--color-primary)' }}
 								>
 									{stat.value}
 								</p>
@@ -158,14 +131,14 @@ export default function BenchmarkPage() {
 				</section>
 
 				{/* ── Charts (client component) ── */}
-				<BenchmarkCharts servers={SERVERS}/>
+				<BenchmarkCharts servers={SERVERS} />
 
 				{/* ── Test environment ── */}
 				<section className="mt-16 animate-slide-up">
 					<div className="flex items-center gap-3 mb-6">
 						<div
 							className="w-1 h-6 rounded-full"
-							style={{background: 'linear-gradient(to bottom, var(--color-surface), var(--color-secondary))'}}
+							style={{ background: 'linear-gradient(to bottom, var(--color-surface), var(--color-secondary))' }}
 						/>
 						<h2 className="font-display font-semibold text-xl text-text-primary">
 							Test Environment
@@ -178,11 +151,11 @@ export default function BenchmarkPage() {
 								<div
 									key={row.label}
 									className="flex items-start gap-3 py-2 border-b last:border-0 sm:nth-last-2:border-0"
-									style={{borderColor: 'var(--color-border)'}}
+									style={{ borderColor: 'var(--color-border)' }}
 								>
 									<span
 										className="text-xs font-display font-semibold uppercase tracking-wider w-20 shrink-0 pt-0.5"
-										style={{color: 'var(--color-info)'}}
+										style={{ color: 'var(--color-info)' }}
 									>
 										{row.label}
 									</span>
@@ -197,13 +170,14 @@ export default function BenchmarkPage() {
 
 				{/* ── Disclaimer ── */}
 				<p className="text-xs text-text-muted text-center mt-10 max-w-2xl mx-auto leading-relaxed">
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget justo sagittis, suscipit massa nec,
-					varius dolor.
+					These benchmarks are very unfair, as Paper and Purpur implement the entire Minecraft server logic in Java, while Temper MC is no-where near feature complete and currently doesn't implement as many features of the Minecraft server as Paper and Purpur, so these numbers should be taken with a grain of salt. However, they do demonstrate the potential of our approach and the significant performance improvements that can be achieved by rethinking how Minecraft servers are built.
+					<br />
+					Some of the numbers don't look right? Come have a chat in our Discord, it's more than likely that we just haven't remembered to update them in a while. Keep in mind that these benchmarks were taken on a high end machine and your mileage may vary based on your hardware and the specific workload, but we hope they give you a good idea of the performance benefits that Temper MC can offer.
 				</p>
 
 			</Main>
 
-			<Footer/>
+			<Footer />
 		</div>
 	);
 }
