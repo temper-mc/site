@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 
@@ -59,13 +60,7 @@ export default function NavInteractive({ navLinks }: NavInteractiveProps) {
 								className="absolute inset-0 rounded-2xl blur-lg opacity-40 group-hover:opacity-70 transition-opacity duration-300"
 								style={{ background: 'linear-gradient(to bottom right, var(--color-info), var(--color-surface))' }}
 							/>
-							{/* Logo icon placeholder — swap with your <Image> */}
-							<div
-								className="relative w-full h-full rounded-2xl flex items-center justify-center text-white text-sm font-bold font-display"
-								style={{ background: 'linear-gradient(to bottom right, var(--color-info), var(--color-surface))' }}
-							>
-								T
-							</div>
+							<Image src="/favicon.webp" alt="Logo" width={40} height={40} className="relative rounded-2xl" />
 						</div>
 						<div>
 							<p className="font-display font-bold text-xl md:text-2xl text-gradient leading-none">

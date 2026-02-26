@@ -128,9 +128,23 @@ export default function Home() {
 						<p className="text-lg md:text-xl mb-8 max-w-2xl mx-auto text-text-secondary">
 							Join our Discord community to learn more about our software or even contribute!
 						</p>
-						<div className="flex flex-wrap items-center justify-center gap-4">
-							<button className="btn-cta-primary">Join Discord</button>
-							<button className="btn-cta-outline">GitHub</button>
+						<div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+							<a
+								href="https://discord.gg/6QPZgUy4sA"
+								target="_blank"
+								rel="noopener noreferrer"
+								className="btn-cta-primary w-full sm:w-auto"
+							>
+								Join the Discord
+							</a>
+							<a
+								href="https://github.com/temper-mc/temper"
+								target="_blank"
+								rel="noopener noreferrer"
+								className="btn-cta-outline w-full sm:w-auto"
+							>
+								View on GitHub
+							</a>
 						</div>
 					</div>
 				</section>

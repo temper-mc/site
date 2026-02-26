@@ -64,8 +64,32 @@ const FAQ_CATEGORIES: FaqCategory[] = [
 				question: 'If I want to contribute, can I use AI?',
 				answer: "Yes, but simply providing quantity over quality won't do you any favours. AI can be helpful yes, but you are still expected to understand what you are submitting and be able to explain it if asked. If you just dump a wall of AI generated code that doesn't work or isn't up to our standards, it's not going to get merged and it's just going to waste everyone's time. If you consistently submit poor quality AI generated code without being able to explain or fix it, future PRs from you will likely be ignored. In short, if you wouldn't be able to write the code without an AI, then you probably shouldn't be submitting it with an AI. If you are of the opinion that throwing a wall of unchecked AI slop at the PRs page is the right way for the project to be developed, you should probably go find another vibe-coded project that shares that vision, or start your own.",
 			},
+			{
+				question: "I am simply overflowing with money, how can I give you some of my obscene wealth?",
+				answer: "I am such a kind and generous person that I will take some of that pesky money off your hands. Jokes aside, donating money is in no way expected or required, but if you really do want to support the project financially, there is a buymeacoffee page <a href='https://www.buymeacoffee.com/temper' target='_blank' rel='noopener noreferrer' class='underline hover:text-primary text-secondary transition-colors'>here</a>. The money goes towards hosting costs, domain registration and other expenses related to running the project, and any excess funds will be put towards future development and improvements. There are some small benefits for donors such as having your name listed on the website and a special role in the Discord, but the main motivation for donating should be just wanting to support the project and help it succeed rather than any specific perks. We appreciate any support we get, whether it's financial or just spreading the word about the project, and we're grateful to have such an amazing community behind us.",
+			},
+			{
+				question: "Who did that super cool logo?",
+				answer: "The logo was designed by a super cool artist who goes by the name of Star. You can check them out here: <a href='https://starcomissions.carrd.co/' target='_blank' class='underline hover:text-primary text-secondary transition-colors'>https://starcomissions.carrd.co/</a>. I have worked with them previously on some work for another project and they always deliver high quality work very fast with extremely reasonable prices, I'd highly recommend them if you need any art or design work done.",
+			}
 		] satisfies FaqItem[],
 	},
+	{
+		label: 'Gameplay',
+		gradient: 'linear-gradient(to right, var(--color-surface), var(--color-info))',
+		icon: '❓',
+		items: [
+			{
+				question: "Will Temper have any gameplay differences from vanilla Minecraft?",
+				answer: "Most likely yes. We are trying to avoid using decompiled code so we don't get sued by Microsoft/Mojang and this ultimately means that some of the game's internal workings won't be easy to replicate. For most things the community has well documented so we can simply consult the wiki or chat to Minecraft experts in the community to figure out how to replicate it, but for some more obscure mechanics we might have to make educated guesses based on testing and observation. Stuff like terrain generation for example will be nearly impossible to perfectly replicate without decompiling the code, but we can get very close with enough testing and iteration. We also want to take this opportunity to fix some of Minecraft's longstanding issues and inconsistencies, so there will likely be some intentional differences as well. Our goal is to make a server software that is compatible with vanilla Minecraft clients and provides a solid foundation for plugins and mods, but that doesn't necessarily mean we have to replicate every single quirk and bug of the vanilla server.",
+			},
+			{
+				question: "Feature XYZ does not exist or work correctly, what can I do about it?",
+				answer: "There is a pretty solid chance that we just haven't gotten around to implementing it yet, especially if it's a more obscure or less popular feature, or it requires other unimplemented features to be added first. If it's important to you, come have a chat and we can discuss how it's being handled. It might be further down the roadmap than you'd like, in which case you can either wait for us to get to it, or if you have the skills and motivation to work on it yourself, we would welcome contributions. If it's a bug rather than a missing feature, definitely report it in the Discord or on github so we can get it fixed as soon as possible. We are still in early development and there are bound to be a lot of missing features and bugs, but we are working hard to get them all ironed out and we appreciate the community's patience and help in getting there.",
+			},
+		] satisfies FaqItem[],
+	}
+
 ];
 
 // ─── Page ─────────────────────────────────────────────────────

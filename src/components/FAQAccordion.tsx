@@ -1,9 +1,9 @@
 'use client';
 
-import {useState} from 'react';
-import {FaqItem} from "@/types/faq";
+import { useState } from 'react';
+import { FaqItem } from "@/types/faq";
 
-export default function FaqAccordion({items}: { items: FaqItem[] }) {
+export default function FaqAccordion({ items }: { items: FaqItem[] }) {
 	const [openIndex, setOpenIndex] = useState<number | null>(null);
 
 	return (
@@ -32,7 +32,7 @@ export default function FaqAccordion({items}: { items: FaqItem[] }) {
 						>
 							<span
 								className="font-display font-semibold text-sm md:text-base transition-colors duration-200"
-								style={{color: isOpen ? 'var(--color-primary)' : 'var(--color-text-primary)'}}
+								style={{ color: isOpen ? 'var(--color-primary)' : 'var(--color-text-primary)' }}
 							>
 								{item.question}
 							</span>
@@ -49,13 +49,13 @@ export default function FaqAccordion({items}: { items: FaqItem[] }) {
 							>
 								<svg
 									className="w-3.5 h-3.5"
-									style={{color: isOpen ? 'var(--color-info)' : 'var(--color-text-muted)'}}
+									style={{ color: isOpen ? 'var(--color-info)' : 'var(--color-text-muted)' }}
 									fill="none"
 									stroke="currentColor"
 									viewBox="0 0 24 24"
 								>
 									<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5}
-									      d="M19 9l-7 7-7-7"/>
+										d="M19 9l-7 7-7-7" />
 								</svg>
 							</span>
 						</button>
@@ -74,8 +74,8 @@ export default function FaqAccordion({items}: { items: FaqItem[] }) {
 									color: 'var(--color-text-secondary)',
 									borderColor: 'color-mix(in srgb, var(--color-info) 15%, transparent)',
 								}}
+								dangerouslySetInnerHTML={{ __html: item.answer }}
 							>
-								{item.answer}
 							</div>
 						</div>
 					</div>
