@@ -4,7 +4,7 @@ import Footer from '@/components/layout/Footer';
 import Main from '@/components/layout/Main';
 import FaqAccordion from '@/components/FAQAccordion';
 import { FaqCategory, FaqItem } from '@/types/faq';
-import { IoMdCog } from "react-icons/io";
+import { IoLogoGameControllerA, IoMdCog } from "react-icons/io";
 import { GiFocusedLightning } from "react-icons/gi";
 
 export const metadata: Metadata = {
@@ -22,11 +22,11 @@ const FAQ_CATEGORIES: FaqCategory[] = [
 		items: [
 			{
 				question: 'Why do you use an ECS over a more traditional OOP setup?',
-				answer: "The main reason is that it's simply the right tool for the job. An ECS excels at managing high numbers of entities with complex interactions, which is exactly what a Minecraft server needs to do. The ECS approach wasn't super popular when Minecraft was first developed and the JVM makes it much harder for the ECS's cache hits to shine since the JVM can get in the way with its own memory management and optimizations, but Rust's lack of a runtime makes it a perfect fit. Even Mojang sees te value in it, since Bedrock Edition uses an ECS architecture as well. In the end, Java is more designed for OOP architectures, and Rust lends itself better to an ECS design, so it just made more sense to go with an ECS for Temper rather than trying to shoehorn an OOP design in there just for the sake of familiarity or tradition.",
+				answer: "The main reason is that it's simply the right tool for the job. An ECS excels at managing high numbers of entities with complex interactions, which is exactly what a Minecraft server needs to do. The ECS approach wasn't super popular when Minecraft was first developed and the JVM makes it much harder for the ECS's cache hits to shine since the JVM can get in the way with its own memory management and optimizations, but Rust's lack of a runtime makes it a perfect fit. Even Mojang sees the value in it, since Bedrock Edition uses an ECS architecture as well. In the end, Java is more designed for OOP architectures, and Rust lends itself better to an ECS design, so it just made more sense to go with an ECS for Temper rather than trying to shoehorn an OOP design in there just for the sake of familiarity or tradition.",
 			},
 			{
 				question: "How is the world stored?",
-				answer: "We use a proper key-value database for storage, called LMDB. It has a lot of upsides like massive performance, memory-mapping, fault tolerance being developed by people way smarter than us. It's not compatible with Minecraft's world format called Anvil sadly, but we figured that utilizing 15 years of software breakthroughs since Minecraft's inception was worth trading out drop-in compatibility for, especially since we have a world importing tool that can import existing worlds.",
+				answer: "We use a proper key-value database for storage, called LMDB. It has a lot of upsides like massive performance, memory-mapping, fault tolerance and being developed by people way smarter than us. It's not compatible with Minecraft's world format called Anvil sadly, but we figured that utilizing 15 years of software breakthroughs since Minecraft's inception was worth trading out drop-in compatibility for, especially since we have a world importing tool that can import existing worlds.",
 			},
 			{
 				question: "Are we getting plugins support?",
@@ -34,11 +34,11 @@ const FAQ_CATEGORIES: FaqCategory[] = [
 			},
 			{
 				question: "Will bukkit/spigot/paper plugins work with Temper?",
-				answer: "Long story short, no. Completely different languages, implementations and architectures make it almost impossible for Java plugins to work with Temper. A compatibility layer would be possible on paper, but it'd be a massive headache to implement, extremely sketchy and having to pass everything to a Java runtime and back would obliterate performance. More complex plugins would also require a deeper compatibility layer and it'd eventually get to the point where reliably running popular plugins like WorldEdit or Dynmap would require us to basically re-implement Paper/Bukkit on top of Temper, at which point there isn't much reason to be doing this project in the first place. When feature-completeness is on the horizon we might revisit, but for now it's very unlikely it'll happen.",
+				answer: "Long story short, no. Completely different languages, implementations and architectures make it almost impossible for Java plugins to work with Temper. A compatibility layer would be possible in theory, but it'd be a massive headache to implement, extremely sketchy and having to pass everything to a Java runtime and back would obliterate performance. More complex plugins would also require a deeper compatibility layer and it'd eventually get to the point where reliably running popular plugins like WorldEdit or Dynmap would require us to basically re-implement Paper/Bukkit on top of Temper, at which point there isn't much reason to be doing this project in the first place. When feature-completeness is on the horizon we might revisit, but for now it's very unlikely it'll happen.",
 			},
 			{
 				question: "Why Rust?",
-				answer: "I know the software world is saturated with stuff being rewritten in Rust for no good reason, but I promise it's actually the tool for the job here. Other languages have been considered but Rust just ended up coming out on top. Rust is only marginally slower than C/C++ and is much easier to write and maintain, with memory safety guarantees and a modern ecosystem. Golang was ruled out due to not scaling well with the size of the codebase and most interpreted languages like Python and Javascript/Typescript would have been too slow to be a real improvement over the vanilla server. C# was a real consideration at one point, but the lack of support for proper multithreading would have meant we would lose out on a massive performance opportunity. Zig was also considered, but with it being so young and unstable, along with not being as well known or widely used as Rust, it just didn't make sense to go with it over Rust which has a much larger ecosystem and community. In the end, Rust just made the most sense for what we wanted to achieve with Temper, and we're excited to be using it to build a better Minecraft server experience.",
+				answer: "I know the software world is saturated with stuff being rewritten in Rust for no good reason, but I promise it's actually the tool for the job here. If we want solid performance improvements, we need to pick the right language for the job, and native code is almost always faster than VM languages like Java, C# or Go. The main contenders for natively compiled options are C, C++, Rust and Zig. I'm not doing this is C because it's an ancient language with memory safety boiling down to \"get gud\", abysmal tooling and is miserable to work with. C++ is slightly better, but is plagued with decades of bloated features and still has considerable memory safety concerns. Zig is certainly cool and I would be interested in seeing if it could at some point be integrated in the project, but ultimately it's very young and has a much smaller ecosystem and community than Rust, which would make it harder to find contributors and libraries for things like networking, databases and other stuff we need. Rust on the other hand has a fantastic ecosystem, great performance, memory safety guarantees and is generally a joy to work with once you get past the learning curve. I've also found that the rust community is extremely welcoming and inclusive, which is important for getting new contributors and building a positive community around the project. So yeah, Rust is the best choice for this project in my opinion, and I think the \"BlAzInGlY fAsT\" stigma is a fair price to pay for safe, high-performance code and a great community.",
 			}
 		] satisfies FaqItem[],
 	},
@@ -58,7 +58,7 @@ const FAQ_CATEGORIES: FaqCategory[] = [
 			},
 			{
 				question: 'If I want to contribute, where should I start?',
-				answer: "We welcome contributions of all kinds, whether it's code, documentation, bug reports or just spreading the word. Hopping in the Discord is a good first step, since you can ask what needs working on we can discuss how to best help you contribute. If you want to dive right into the code, the github usually has some issues open for what needs doing, feel free to pick one up and start working on it, and if you have any questions or need help don't hesitate to ask in the Discord or open an issue on github. If you want to work on something that someone else has already picked up, chuck a comment on the issue or in the Discord to see if you can collaborate with them rather than stepping on their toes.",
+				answer: "We welcome contributions of all kinds, whether it's code, documentation, bug reports or just spreading the word. Hopping in the Discord is a good first step, since you can ask what needs working on we can discuss how to best help you contribute. If you want to dive right into the code, the GitHub usually has some issues open for what needs doing, feel free to pick one up and start working on it, and if you have any questions or need help don't hesitate to ask in the Discord or open an issue on GitHub. If you want to work on something that someone else has already picked up, chuck a comment on the issue or in the Discord to see if you can collaborate with them rather than stepping on their toes.",
 			},
 			{
 				question: 'If I want to contribute, can I use AI?',
@@ -71,13 +71,17 @@ const FAQ_CATEGORIES: FaqCategory[] = [
 			{
 				question: "Who did that super cool logo?",
 				answer: "The logo was designed by a super cool artist who goes by the name of Star. You can check them out here: <a href='https://starcomissions.carrd.co/' target='_blank' class='underline hover:text-primary text-secondary transition-colors'>https://starcomissions.carrd.co/</a>. I have worked with them previously on some work for another project and they always deliver high quality work very fast with extremely reasonable prices, I'd highly recommend them if you need any art or design work done.",
+			},
+			{
+				question: "I don't like Discord, is there another way to get in touch or stay updated?",
+				answer: "Discord is our main hub for community interaction and updates, but we understand it's not everyone's cup of tea. We also have a presence on GitHub where you can follow the project and see updates, but for most communication Discord is where it's at. If you really, really don't want to use Discord, let us know in the GitHub discussions page and if there's enough demand for alternatives, we can look into something like Matrix or other platforms."
 			}
 		] satisfies FaqItem[],
 	},
 	{
 		label: 'Gameplay',
 		gradient: 'linear-gradient(to right, var(--color-surface), var(--color-info))',
-		icon: '❓',
+		icon: <IoLogoGameControllerA />,
 		items: [
 			{
 				question: "Will Temper have any gameplay differences from vanilla Minecraft?",
@@ -85,8 +89,27 @@ const FAQ_CATEGORIES: FaqCategory[] = [
 			},
 			{
 				question: "Feature XYZ does not exist or work correctly, what can I do about it?",
-				answer: "There is a pretty solid chance that we just haven't gotten around to implementing it yet, especially if it's a more obscure or less popular feature, or it requires other unimplemented features to be added first. If it's important to you, come have a chat and we can discuss how it's being handled. It might be further down the roadmap than you'd like, in which case you can either wait for us to get to it, or if you have the skills and motivation to work on it yourself, we would welcome contributions. If it's a bug rather than a missing feature, definitely report it in the Discord or on github so we can get it fixed as soon as possible. We are still in early development and there are bound to be a lot of missing features and bugs, but we are working hard to get them all ironed out and we appreciate the community's patience and help in getting there.",
+				answer: "There is a pretty solid chance that we just haven't gotten around to implementing it yet, especially if it's a more obscure or less popular feature, or it requires other unimplemented features to be added first. If it's important to you, come have a chat and we can discuss how it's being handled. It might be further down the roadmap than you'd like, in which case you can either wait for us to get to it, or if you have the skills and motivation to work on it yourself, we would welcome contributions. If it's a bug rather than a missing feature, definitely report it in the Discord or on GitHub so we can get it fixed as soon as possible. We are still in early development and there are bound to be a lot of missing features and bugs, but we are working hard to get them all ironed out and we appreciate the community's patience and help in getting there.",
 			},
+			{
+				question: "Will terrain generation be the same as vanilla?",
+				answer: "Maybe? We aren't sure if we want to do it or not, so come and let us know your thoughts. Replicating vanilla terrain generation is a huge pain, but not impossible, so if it's something the community really wants we can make it happen. On the other hand, this is a great opportunity to implement better terrain generation with more features and less bugs than vanilla, so if there's enough interest in that we might go that route instead. Let us know what you think in the Discord or GitHub discussions, and if you have any ideas for cool terrain generation features or improvements over vanilla, we'd love to hear those as well.",
+			},
+			{
+				question: "Will there be any QoL improvements or new features added to the game?",
+				answer: "Yup! Currently we have a nice dashboard that is hosted alongside the server that lets you easily see performance stats, player counts and other useful info about your server, and stuff like interactive console and chat is planned for the dashboard. We also have an updating list of known IP addresses belonging to botnets/scanners that are blocked by default to avoid servers getting scanned and players being tracked across servers by malicious actors. If you have any ideas for QoL improvements or new features that you'd like to see, let us know in the Discord or GitHub discussions! We want to make a server software that not only replicates vanilla Minecraft but also improves on it.",
+			}
+		] satisfies FaqItem[],
+	},
+	{
+		label: 'Other',
+		gradient: 'linear-gradient(to right, var(--color-info), var(--color-primary))',
+		icon: '❓',
+		items: [
+			{
+				question: "Can I run Temper on a Raspberry Pi?",
+				answer: "Yes! You will likely need to turn down the database map size in the config since we've had some reports of it being too big for the Pi at default values, but other than that it should run just fine. We haven't done extensive testing on ARM devices yet, but since Rust compiles to native code for a wide variety of platforms and our CI testing and builds run on ARM64 runners as well, it should work just fine on the Pi. If you have a Raspberry Pi and want to test it out, we'd love to hear about your experience and any performance metrics you can share!",
+			}
 		] satisfies FaqItem[],
 	}
 
@@ -174,7 +197,7 @@ export default function FaqPage() {
 							className="btn-cta-primary">
 							Join Discord
 						</a>
-						<a href="https://github.com/temper-mc/temper/issues" target="_blank" rel="noopener noreferrer"
+						<a href="https://GitHub.com/temper-mc/temper/issues" target="_blank" rel="noopener noreferrer"
 							className="btn-cta-outline">
 							Open an issue
 						</a>
