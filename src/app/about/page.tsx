@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type {Metadata} from 'next';
 import Image from 'next/image';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
@@ -23,86 +23,59 @@ interface GitHubContributor {
 	type: string;
 }
 
-export interface LOCLang {
-	language: string
-	files: number
-	lines: number
-	blanks: number
-	comments: number
-	linesOfCode: number
+interface stat {
+	value: string;
+	label: string;
 }
 
+const headers = {Accept: 'application/vnd.github+json'};
 
-// ─── Data fetch (runs at build time / ISR) ────────────────────
-async function getContributors(): Promise<GitHubContributor[]> {
-	try {
-		let headers: any = {
-			Accept: 'application/vnd.github+json',
-		};
-		if (process.env.GH_TOKEN) {
-			headers['Authorization'] = `token ${process.env.GH_TOKEN}`;
-		}
-		const res = await fetch(
-			`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contributors?anon=false`,
-			{
-				headers: headers,
-				next: { revalidate: 3600 },
-			}
-		);
-		if (!res.ok) throw new Error(`GitHub API ${res.status}`);
-		const data: GitHubContributor[] = await res.json();
-		return data.filter((c) => c.type !== 'Bot');
-	} catch (err) {
-		console.error('Failed to fetch contributors:', err);
-		return [];
-	}
-}
+const [locData, contributorsData] = await Promise.all([
+	fetch("https://api.codetabs.com/v1/loc/?github=temper-mc/temper", {
+		next: {revalidate: 3600}
+	}).then(r => r.json()),
+	fetch(`https://api.github.com/repos/temper-mc/temper/contributors?anon=false`, {
+		headers,
+		next: {revalidate: 3600}
+	}).then(r => r.json()),
+]);
 
-async function getLOC(): Promise<number> {
-	try {
-		const res = await fetch(
-			"https://api.codetabs.com/v1/loc/?github=temper-mc/temper",
-		);
-		if (!res.ok) throw new Error(`CodeTabs API ${res.status}`);
-		const data: LOCLang[] = await res.json();
-		return data.find((lang) => lang.language === 'Rust')?.linesOfCode || 0;
-	} catch (err) {
-		console.error('Failed to fetch LOC:', err);
-		return 0;
-	}
+const loc = locData.find((l: { language: string }) => l.language === "Total")?.linesOfCode ?? 0;
+const contributors: GitHubContributor[] = contributorsData.filter((c: { type: string }) => c.type !== "Bot");
 
-}
-
-// ─── Static data ─────────────────────────────────────────────
-const stats = [
-	{ value: (await getLOC()).toLocaleString(), label: 'Lines of code' },
-	{ value: 'GPL-3.0', label: 'License' },
-	{ value: (await getContributors()).length, label: 'Contributors' },
-	{ value: "Bevy", label: 'ECS' },
+const stats: stat[] = [
+	{value: loc.toString(), label: 'Lines of code'},
+	{value: 'GPL-3.0', label: 'License'},
+	{value: contributors.length.toLocaleString(), label: 'Contributors'},
+	{value: 'Bevy', label: 'ECS'},
 ];
 
 const techStack = [
-	{ name: 'ECS', desc: 'Bevy ECS is used to enable massive parallelism and efficient data-oriented design.' },
-	{ name: 'LMDB', desc: 'LMDB is used to store data on disk, powering fast, reliable and durable storage.' },
-	{ name: 'Tokio', desc: 'Tokio is used for asynchronous networking, letting the server focus on running the world instead of waiting for network packets' },
-	{ name: "Axum", desc: "Axum powers the web dashboard to serve a stylish and powerful way to manage the server remotely." },
+	{name: 'ECS', desc: 'Bevy ECS is used to enable massive parallelism and efficient data-oriented design.'},
+	{name: 'LMDB', desc: 'LMDB is used to store data on disk, powering fast, reliable and durable storage.'},
+	{
+		name: 'Tokio',
+		desc: 'Tokio is used for asynchronous networking, letting the server focus on running the world instead of waiting for network packets'
+	},
+	{
+		name: "Axum",
+		desc: "Axum powers the web dashboard to serve a stylish and powerful way to manage the server remotely."
+	},
 ];
 
 // ─── Page ─────────────────────────────────────────────────────
-export default async function AboutPage() {
-	const contributors = await getContributors();
-
+export default function AboutPage() {
 	return (
 		<div className="min-h-screen">
-			<Header />
+			<Header/>
 
 			<Main>
 
 				{/* ── Hero ── */}
 				<section className="mb-24 animate-fade-in">
-					<div className="max-w-3xl mx-auto text-center">						<p
+					<div className="max-w-3xl mx-auto text-center"><p
 						className="inline-block text-sm font-display font-semibold tracking-widest uppercase mb-4 px-4 py-1.5 rounded-full border border-border-hover"
-						style={{ color: 'var(--color-info)' }}
+						style={{color: 'var(--color-info)'}}
 					>
 						About
 					</p>
@@ -110,7 +83,9 @@ export default async function AboutPage() {
 							Powerful, performant and open
 						</h1>
 						<p className="text-xl text-text-secondary leading-relaxed animate-slide-up animate-delay-100">
-							Forever open source and free to use, Temper MC is built by a passionate community of developers who care deeply about performance, reliability and the Minecraft experience. We believe in transparency, collaboration and giving back to the community that supports us.
+							Forever open source and free to use, Temper MC is built by a passionate community of
+							developers who care deeply about performance, reliability and the Minecraft experience. We
+							believe in transparency, collaboration and giving back to the community that supports us.
 						</p>
 					</div>
 				</section>
@@ -122,7 +97,7 @@ export default async function AboutPage() {
 							<div key={stat.label} className="card text-center group">
 								<p
 									className="font-display font-bold text-4xl md:text-5xl mb-1 group-hover:scale-105 transition-transform duration-300 inline-block"
-									style={{ color: 'var(--color-primary)' }}
+									style={{color: 'var(--color-primary)'}}
 								>
 									{stat.value}
 								</p>
@@ -138,26 +113,33 @@ export default async function AboutPage() {
 				<section className="mb-24">
 					<div
 						className="relative overflow-hidden rounded-3xl p-10 md:p-16"
-						style={{ background: 'linear-gradient(135deg, color-mix(in srgb, var(--color-bg-gradient-start) 20%, var(--color-bg-secondary)), color-mix(in srgb, var(--color-bg-gradient-end) 15%, var(--color-bg-secondary)))' }}
+						style={{background: 'linear-gradient(135deg, color-mix(in srgb, var(--color-bg-gradient-start) 20%, var(--color-bg-secondary)), color-mix(in srgb, var(--color-bg-gradient-end) 15%, var(--color-bg-secondary)))'}}
 					>
 						<div
 							className="absolute -top-16 -right-16 w-48 h-48 rounded-full blur-3xl opacity-20 pointer-events-none"
-							style={{ background: 'var(--color-accent)' }} />
+							style={{background: 'var(--color-accent)'}}/>
 						<div
 							className="absolute -bottom-16 -left-16 w-48 h-48 rounded-full blur-3xl opacity-20 pointer-events-none"
-							style={{ background: 'var(--color-surface)' }} />
+							style={{background: 'var(--color-surface)'}}/>
 
 						<div className="relative max-w-2xl">
 							<p className="text-sm font-display font-semibold tracking-widest uppercase mb-4"
-								style={{ color: 'var(--color-info)' }}>
+							   style={{color: 'var(--color-info)'}}>
 								Our Mission
 							</p>
 							<blockquote
 								className="text-2xl md:text-3xl font-display font-semibold leading-snug text-text-primary mb-6">
-								Delivering a fast and reliable Minecraft server without sacrificing openness and community-driven development.
+								Delivering a fast and reliable Minecraft server without sacrificing openness and
+								community-driven development.
 							</blockquote>
 							<p className="text-text-secondary leading-relaxed">
-								Instead of using legally-dubious decompiled code, AI nonsense taken from god-knows-where or copying what Mojang did over a decade ago in the name of "parity", we take the hard route and build everything from the ground up using modern approaches, open source libraries and and our own scrutinized code. This allows us to push the boundaries of performance and reliability while maintaining a fully open and transparent development process that welcomes contributions from anyone in the community, ensuring that Temper MC is not just built for the community, but built by the community.
+								Instead of using legally-dubious decompiled code, AI nonsense taken from god-knows-where
+								or copying what Mojang did over a decade ago in the name of &#34;parity&#34;, we take the hard
+								route and build everything from the ground up using modern approaches, open source
+								libraries and and our own scrutinized code. This allows us to push the boundaries of
+								performance and reliability while maintaining a fully open and transparent development
+								process that welcomes contributions from anyone in the community, ensuring that Temper
+								MC is not just built for the community, but built by the community.
 							</p>
 						</div>
 					</div>
@@ -167,11 +149,11 @@ export default async function AboutPage() {
 				<section className="mb-24">
 					<div className="text-center mb-12">
 						<p className="text-sm font-display font-semibold tracking-widest uppercase mb-3"
-							style={{ color: 'var(--color-info)' }}>
+						   style={{color: 'var(--color-info)'}}>
 							Under the hood
 						</p>
 						<h2 className="font-display font-bold text-text-primary">
-							How it's built
+							How it&#39;s built
 						</h2>
 					</div>
 
@@ -180,11 +162,11 @@ export default async function AboutPage() {
 							<div
 								key={tech.name}
 								className="card group flex items-start gap-4 animate-slide-up"
-								style={{ animationDelay: `${i * 75}ms` }}
+								style={{animationDelay: `${i * 75}ms`}}
 							>
 								<div
 									className="w-10 h-10 rounded-xl shrink-0 flex items-center justify-center text-xs font-mono font-bold text-white group-hover:scale-110 transition-transform duration-300"
-									style={{ background: 'linear-gradient(135deg, var(--color-info), var(--color-primary))' }}
+									style={{background: 'linear-gradient(135deg, var(--color-info), var(--color-primary))'}}
 								>
 									{tech.name.slice(0, 2)}
 								</div>
@@ -208,7 +190,7 @@ export default async function AboutPage() {
 						<div className="flex items-end justify-between mb-8">
 							<div>
 								<p className="text-sm font-display font-semibold tracking-widest uppercase mb-1"
-									style={{ color: 'var(--color-info)' }}>
+								   style={{color: 'var(--color-info)'}}>
 									Open Source
 								</p>
 								<h2 className="font-display font-bold text-text-primary">
@@ -220,7 +202,7 @@ export default async function AboutPage() {
 						{/* Contributor tiles */}
 						<div
 							className="rounded-3xl border border-border p-6"
-							style={{ backgroundColor: 'var(--color-bg-secondary)' }}
+							style={{backgroundColor: 'var(--color-bg-secondary)'}}
 						>
 							<div className="flex flex-wrap gap-2 content-center justify-center">
 								{contributors.map((c) => (
@@ -230,13 +212,13 @@ export default async function AboutPage() {
 										target="_blank"
 										rel="noopener noreferrer"
 										className="group flex flex-col items-center gap-1.5 w-20 p-2 rounded-2xl border border-transparent hover:border-border-hover transition-all duration-300"
-										style={{ '--hover-bg': 'color-mix(in srgb, var(--color-info) 5%, transparent)' } as React.CSSProperties}
+										style={{'--hover-bg': 'color-mix(in srgb, var(--color-info) 5%, transparent)'} as React.CSSProperties}
 										title={`${c.login} \n ${c.contributions} contributions`}
 									>
 										<div className="relative">
 											<div
 												className="absolute inset-0 rounded-full blur-sm opacity-0 group-hover:opacity-50 transition-opacity duration-300"
-												style={{ background: 'linear-gradient(135deg, var(--color-info), var(--color-primary))' }}
+												style={{background: 'linear-gradient(135deg, var(--color-info), var(--color-primary))'}}
 											/>
 											<Image
 												src={c.avatar_url}
@@ -252,7 +234,7 @@ export default async function AboutPage() {
 										</span>
 										<span
 											className="text-xs font-mono opacity-50 group-hover:opacity-100 transition-opacity"
-											style={{ color: 'var(--color-info)' }}
+											style={{color: 'var(--color-info)'}}
 										>
 											{c.contributions}
 										</span>
@@ -268,25 +250,28 @@ export default async function AboutPage() {
 					className="relative overflow-hidden rounded-3xl border border-border-hover p-12 text-center mb-8">
 					<div
 						className="absolute inset-0 -z-10"
-						style={{ background: 'linear-gradient(135deg, color-mix(in srgb, var(--color-bg-gradient-start) 25%, var(--color-bg-secondary)), color-mix(in srgb, var(--color-bg-gradient-end) 20%, var(--color-bg-secondary)))' }}
+						style={{background: 'linear-gradient(135deg, color-mix(in srgb, var(--color-bg-gradient-start) 25%, var(--color-bg-secondary)), color-mix(in srgb, var(--color-bg-gradient-end) 20%, var(--color-bg-secondary)))'}}
 					/>
 					<div
 						className="absolute -top-12 -left-12 w-40 h-40 rounded-full blur-3xl opacity-20 pointer-events-none -z-10"
-						style={{ background: 'var(--color-secondary)' }} />
+						style={{background: 'var(--color-secondary)'}}/>
 					<div
 						className="absolute -bottom-12 -right-12 w-40 h-40 rounded-full blur-3xl opacity-20 pointer-events-none -z-10"
-						style={{ background: 'var(--color-accent)' }} />
+						style={{background: 'var(--color-accent)'}}/>
 
 					<div className="relative">
 						<p className="text-sm font-display font-semibold tracking-widest uppercase mb-4"
-							style={{ color: 'var(--color-info)' }}>
+						   style={{color: 'var(--color-info)'}}>
 							Open Source
 						</p>
 						<h2 className="text-3xl md:text-4xl font-display font-bold mb-4 text-text-primary">
 							Want to contribute?
 						</h2>
 						<p className="text-lg mb-8 max-w-xl mx-auto text-text-secondary">
-							Join our Discord server to chat with the team and other contributors, ask questions or even contribute code! We welcome contributions of all kinds, whether it's code, documentation, bug reports or just spreading the word about our project. Together, we can build a better Minecraft server for everyone.
+							Join our Discord server to chat with the team and other contributors, ask questions or even
+							contribute code! We welcome contributions of all kinds, whether it&#39;s code, documentation,
+							bug reports or just spreading the word about our project. Together, we can build a better
+							Minecraft server for everyone.
 						</p>
 						<div className="flex flex-wrap items-center justify-center gap-4">
 							<a
@@ -311,7 +296,7 @@ export default async function AboutPage() {
 
 			</Main>
 
-			<Footer />
+			<Footer/>
 		</div>
 	);
 }

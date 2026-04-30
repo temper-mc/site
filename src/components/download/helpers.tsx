@@ -1,6 +1,4 @@
-
-
-function formatDate(iso: string): string {
+export function formatDate(iso: string): string {
 	return new Date(iso).toLocaleDateString('en-US', {
 		year: 'numeric',
 		month: 'long',
@@ -8,14 +6,19 @@ function formatDate(iso: string): string {
 	});
 }
 
-
-function formatDownloads(n: number): string {
+export function formatDownloads(n: number): string {
 	if (n >= 1000) return `${(n / 1000).toFixed(1)}k`;
 	return String(n);
 }
 
-function formatBytes(bytes: number): string {
+export function formatBytes(bytes: number): string {
 	if (bytes < 1024) return `${bytes} B`;
 	if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
 	return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
+}
+
+export function linkifyMentions(text: string) {
+	return text.replace(/@([a-zA-Z0-9_-]+)/g, (_, username) => {
+		return `[@${username}](https://github.com/${username})`;
+	});
 }

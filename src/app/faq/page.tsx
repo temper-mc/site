@@ -136,8 +136,10 @@ export default function FaqPage() {
 					<h1 className="hero-header mb-4 animate-slide-up">
 						Frequently Asked Questions
 					</h1>
-					<p className="text-lg text-text-secondary max-w-xl mx-auto animate-slide-up animate-delay-100">
-						{totalQuestions} answers across {FAQ_CATEGORIES.length} categories. Didn't find what you're looking for?{' '}
+					<p className="text-lg  max-w-xl mx-auto animate-slide-up animate-delay-100">
+						{totalQuestions} answers across {FAQ_CATEGORIES.length} categories. Didn&#39;t find what you&#39;re looking for?{' '}
+						<br/>
+
 						<a
 							href="https://discord.gg/6QPZgUy4sA"
 							target="_blank"
@@ -190,7 +192,7 @@ export default function FaqPage() {
 						Still have questions?
 					</h2>
 					<p className="text-[var(--color-text-secondary)] mb-8 max-w-md mx-auto">
-						The community and core team are active on Discord. Drop a message and we'll get back to you.
+						The community and core team are active on Discord. Drop a message and we&#39;ll get back to you.
 					</p>
 					<div className="flex flex-wrap items-center justify-center gap-4">
 						<a href="https://discord.gg/6QPZgUy4sA" target="_blank" rel="noopener noreferrer"

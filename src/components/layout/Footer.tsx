@@ -1,16 +1,15 @@
 import Link from 'next/link';
-import { RiDiscordLine, RiGithubLine, RiTwitterXFill } from "react-icons/ri";
+import {RiDiscordLine, RiGithubLine} from "react-icons/ri";
+import Image from "next/image";
 
 export default function Footer() {
 	const currentYear = new Date().getFullYear();
 
 	const footerLinks = {
-		software: [
-			{ label: 'Download', href: '/download' },
-			{ label: 'About Us', href: '/about' },
-			{ label: 'Benchmarks', href: '/benchmark' },
-		],
-		// resources: [
+		software: [{label: 'Download', href: '/download'}, {label: 'About Us', href: '/about'}, {
+			label: 'Benchmarks',
+			href: '/benchmark'
+		},], // resources: [
 		// 	{ label: 'Documentation', href: '/docs' },
 		// 	{ label: 'System Requirements', href: '/docs/requirements' },
 		// 	{ label: 'FAQ', href: '/faq' },
@@ -22,30 +21,19 @@ export default function Footer() {
 		// ],
 	};
 
-	const socialLinks = [
-		{
-			name: 'Twitter',
-			href: 'https://twitter.com/',
-			icon: <RiTwitterXFill style={{ fontSize: '1.25rem' }} />,
-		},
-		{
-			name: 'Discord',
-			href: 'https://discord.gg/6QPZgUy4sA',
-			icon: <RiDiscordLine style={{ fontSize: '1.25rem' }} />,
-		},
-		{
-			name: 'GitHub',
-			href: 'https://github.com/temper-mc/temper',
-			icon: <RiGithubLine style={{ fontSize: '1.25rem' }} />,
-		},
-	];
+	const socialLinks = [{
+		name: 'Discord', href: 'https://discord.gg/6QPZgUy4sA', icon: <RiDiscordLine style={{fontSize: '1.25rem'}}/>,
+	}, {
+		name: 'GitHub',
+		href: 'https://github.com/temper-mc/temper',
+		icon: <RiGithubLine style={{fontSize: '1.25rem'}}/>,
+	},];
 
-	return (
-		<footer className="relative mt-24 pt-16 pb-8 border-t border-[var(--color-border)]">
+	return (<footer className="relative mt-24 pt-16 pb-8 border-t border-border">
 			{/* Background gradient */}
 			<div
 				className="absolute inset-0 -z-10 pointer-events-none"
-				style={{ background: 'linear-gradient(to bottom, transparent, color-mix(in srgb, var(--color-info) 5%, transparent))' }}
+				style={{background: 'linear-gradient(to bottom, transparent, color-mix(in srgb, var(--color-info) 5%, transparent))'}}
 			/>
 
 			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -55,27 +43,28 @@ export default function Footer() {
 
 					{/* Brand Column */}
 					<div className="lg:col-span-2">
-						<Link href="/" className="inline-block mb-6">
-							<div className="flex items-center gap-3">
-								<div className="relative">
-									<div
-										className="absolute inset-0 rounded-2xl blur-md opacity-50"
-										style={{ background: 'linear-gradient(to bottom right, var(--color-info), var(--color-surface))' }}
-									/>
-								</div>
-								<h2 className="font-display font-bold text-2xl text-gradient">
+						<Link href="/" className="flex items-center gap-3 group py-4">
+							<div className="relative w-10 h-10 shrink-0">
+								<div
+									className="absolute inset-0 rounded-2xl blur-lg opacity-40 group-hover:opacity-70 transition-opacity duration-300"
+									style={{ background: 'linear-gradient(to bottom right, var(--color-info), var(--color-surface))' }}
+								/>
+								<Image src="/favicon.webp" alt="Logo" width={40} height={40} className="relative rounded-2xl" />
+							</div>
+							<div>
+								<p className="font-display font-bold text-xl md:text-2xl text-gradient leading-none">
 									Temper MC
-								</h2>
+								</p>
 							</div>
 						</Link>
-						<p className="text-[var(--color-text-muted)] mb-6 max-w-sm leading-relaxed">
-							A stupidly fast Minecraft server software designed to push the limits of performance, built by a team of passionate developers who believe we can always go faster, further and higher.
+						<p className="text-muted mb-6 max-w-sm leading-relaxed">
+							A stupidly fast Minecraft server software designed to push the limits of performance, built
+							by a team of passionate developers who believe we can always go faster, further and higher.
 						</p>
 
 						{/* Social Links */}
 						<div className="flex items-center gap-3">
-							{socialLinks.map((social) => (
-								<a
+							{socialLinks.map((social) => (<a
 									key={social.name}
 									href={social.href}
 									target="_blank"
@@ -84,26 +73,23 @@ export default function Footer() {
 									aria-label={social.name}
 								>
 									{social.icon}
-								</a>
-							))}
+								</a>))}
 						</div>
 					</div>
 
 					<div>
-						<h3 className="font-display font-semibold text-[var(--color-text-primary)] mb-4">
+						<h3 className="font-display font-semibold text-primary mb-4">
 							Software
 						</h3>
 						<ul className="space-y-3">
-							{footerLinks.software.map((link) => (
-								<li key={link.href}>
+							{footerLinks.software.map((link) => (<li key={link.href}>
 									<Link
 										href={link.href}
-										className="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors duration-300"
+										className="text-muted hover:text-primary transition-colors duration-300"
 									>
 										{link.label}
 									</Link>
-								</li>
-							))}
+								</li>))}
 						</ul>
 					</div>
 
@@ -128,8 +114,8 @@ export default function Footer() {
 
 				{/* Bottom Bar */}
 				<div
-					className="pt-8 border-t border-[var(--color-border)] flex flex-col md:flex-row items-center justify-between gap-4">
-					<p className="text-sm text-[var(--color-text-muted)]">
+					className="pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4">
+					<p className="text-sm text-muted">
 						© {currentYear} Temper MC. All rights reserved.
 					</p>
 					{/* <div className="flex items-center gap-6">
@@ -145,6 +131,5 @@ export default function Footer() {
 					</div> */}
 				</div>
 			</div>
-		</footer>
-	);
+		</footer>);
 }
