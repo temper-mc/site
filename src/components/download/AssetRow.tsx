@@ -6,14 +6,12 @@ import {MdOutlineFileDownload} from "react-icons/md";
 
 function getPlatformLabel(name: string): { label: string; icon: ReactElement } | null {
 	const lower = name.toLowerCase();
-	if (lower.includes('windows') || lower.endsWith('.exe') || lower.endsWith('.msi'))
+	if (lower.includes('windows'))
 		return {label: 'Windows', icon: <DiWindows/>};
-	if (lower.includes('linux') || lower.endsWith('.tar.gz') || lower.endsWith('.deb') || lower.endsWith('.rpm'))
-		return {label: 'Linux', icon: <DiLinux/>};
-	if (lower.includes('macos') || lower.includes('darwin') || lower.endsWith('.dmg') || lower.endsWith('.pkg'))
+	if (lower.includes('darwin'))
 		return {label: 'macOS', icon: <DiApple/>};
-	if (lower.endsWith('.jar'))
-		return {label: 'Universal', icon: <DiJava/>};
+	if (lower.includes('linux'))
+		return {label: 'Linux', icon: <DiLinux/>};
 	return null;
 }
 
