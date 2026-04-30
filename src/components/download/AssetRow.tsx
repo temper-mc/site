@@ -1,9 +1,7 @@
-import Header from "@/components/layout/Header";
-import Main from "@/components/layout/Main";
-import {FaExternalLinkAlt} from "react-icons/fa";
-import Footer from "@/components/layout/Footer";
 import {ReactElement} from "react";
 import {DiApple, DiJava, DiLinux, DiWindows} from "react-icons/di";
+import {formatBytes, formatDownloads} from "@/components/download/helpers";
+import {MdOutlineFileDownload} from "react-icons/md";
 
 
 function getPlatformLabel(name: string): { label: string; icon: ReactElement } | null {
@@ -38,33 +36,24 @@ export default  function AssetRow({asset}: { asset: Asset }) {
 			</div>
 
 			<div className="flex-1 min-w-0">
-				<p className="text-sm font-mono text-[var(--color-text-primary)] truncate group-hover:text-[var(--color-primary)] transition-colors">
+				<p className="text-sm font-mono text-text-primary truncate group-hover:text-primary transition-colors">
 					{asset.name}
 				</p>
 				{platform && (
-					<p className="text-xs text-[var(--color-text-muted)] mt-0.5">{platform.label}</p>
+					<p className="text-xs text-text-muted mt-0.5">{platform.label}</p>
 				)}
 			</div>
 
-			<div className="hidden sm:flex items-center gap-4 shrink-0 text-xs text-[var(--color-text-muted)]">
+			<div className="hidden sm:flex items-center gap-4 shrink-0 text-xs text-text-muted">
 				<span>{formatBytes(asset.size)}</span>
 				<span className="flex items-center gap-1">
-					<svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-						<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-						      d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
-					</svg>
+					<MdOutlineFileDownload  className="w-3.5 h-3.5" />
 					{formatDownloads(asset.download_count)}
 				</span>
 			</div>
 
-			<svg
-				className="w-4 h-4 shrink-0 opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0 transition-all duration-200"
-				style={{color: 'var(--color-primary)'}}
-				fill="none" stroke="currentColor" viewBox="0 0 24 24"
-			>
-				<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-				      d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
-			</svg>
+			<MdOutlineFileDownload  className="w-4 h-4 shrink-0 text-primary opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0 transition-all duration-200" />
+
 		</a>
 	);
 }

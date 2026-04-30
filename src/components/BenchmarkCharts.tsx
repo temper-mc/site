@@ -100,7 +100,6 @@ function Section({
 function SingleBarChart({
 	data,
 	suffix = '',
-	lowerBetter = false,
 	domain,
 }: {
 	data: BarPoint[];
