@@ -44,9 +44,9 @@ const loc = locData.find((l: { language: string }) => l.language === "Total")?.l
 const contributors: GitHubContributor[] = contributorsData.filter((c: { type: string }) => c.type !== "Bot");
 
 const stats: stat[] = [
-	{value: loc.toString(), label: 'Lines of code'},
+	{value: loc.toLocaleString("en-Au"), label: 'Lines of code'},
 	{value: 'GPL-3.0', label: 'License'},
-	{value: contributors.length.toLocaleString(), label: 'Contributors'},
+	{value: contributors.length.toLocaleString("en-Au"), label: 'Contributors'},
 	{value: 'Bevy', label: 'ECS'},
 ];
 
@@ -236,7 +236,7 @@ export default function AboutPage() {
 											className="text-xs font-mono opacity-50 group-hover:opacity-100 transition-opacity"
 											style={{color: 'var(--color-info)'}}
 										>
-											{c.contributions}
+											{c.contributions.toLocaleString("en-Au")}
 										</span>
 									</a>
 								))}
