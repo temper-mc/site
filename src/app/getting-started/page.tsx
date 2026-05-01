@@ -117,7 +117,7 @@ export default function GettingStartedPage() {
 								the instructions on the website to install rustup for your operating system, and make
 								sure to add it to your system PATH if the installer doesn&#39;t do it automatically. Once
 								you have rustup installed, you can use it to install the latest stable version of Rust
-								by running <code className="bg-secondary text-secondary px-1 py-0.5 rounded">rustup
+								by running <code className="text-secondary px-1 py-0.5 rounded">rustup
 								install stable</code> in your terminal.
 							</p>
 							<p className="text-sm  mt-3">
@@ -127,7 +127,7 @@ export default function GettingStartedPage() {
 								on the website to download and install git for your operating system, and make sure to
 								add it to your system PATH if the installer doesn&#39;t do it automatically. After
 								installing git, you can verify that it&#39;s working by running <code
-								className="bg-secondary text-secondary px-1 py-0.5 rounded">git --version</code> in
+								className="text-secondary px-1 py-0.5 rounded">git --version</code> in
 								your terminal, which should display the installed version of git.
 							</p>
 						</Step>
@@ -163,7 +163,7 @@ export default function GettingStartedPage() {
 							<Note type="info">
 								If you need to squeeze the most possible performance out of your build, you can compile
 								it for your specific CPU architecture with <code
-								className="bg-secondary text-secondary px-1 py-0.5 rounded">RUSTFLAGS=&#34;-C
+								className="text-secondary px-1 py-0.5 rounded">RUSTFLAGS=&#34;-C
 								target-cpu=native&#34;</code> environment variable, which will enable optimizations that are
 								specific to your CPU. Keep in mind that this will make your build non-portable, meaning
 								it may not run on other machines with different CPU architectures, so it&#39;s generally
@@ -171,8 +171,8 @@ export default function GettingStartedPage() {
 							</Note>
 							<p className="text-sm  mt-3">
 								You should have a nice shiny new build of Temper MC ready to go in the <code
-								className="bg-secondary text-secondary px-1 py-0.5 rounded">target/debug</code> or <code
-								className="bg-secondary text-secondary px-1 py-0.5 rounded">target/release</code> directory,
+								className="text-secondary px-1 py-0.5 rounded">target/debug</code> or <code
+								className="text-secondary px-1 py-0.5 rounded">target/release</code> directory,
 								depending on whether you built a debug or release build.
 							</p>
 						</Step>
@@ -211,10 +211,10 @@ export default function GettingStartedPage() {
 								Discord or open an issue on GitHub.
 							</p>
 							<Note type="tip">
-								Running <code className="bg-secondary text-secondary px-1 py-0.5 rounded">cargo
+								Running <code className="text-secondary px-1 py-0.5 rounded">cargo
 								fmt</code> will automatically format your code according to our style guidelines, which
 								can help you avoid formatting issues in your PR, while <code
-								className="bg-secondary text-secondary px-1 py-0.5 rounded">cargo clippy --fix
+								className="text-secondary px-1 py-0.5 rounded">cargo clippy --fix
 								--allow-dirty</code> can automatically fix certain types of lint warnings, which can
 								help you catch and fix common issues in your code before submitting your PR. Just make
 								sure to review the changes made by these commands before committing them, to ensure that
