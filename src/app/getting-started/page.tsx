@@ -75,13 +75,25 @@ export default function GettingStartedPage() {
 					</div>
 
 					<div className="card p-4 sm:p-6 md:p-8">
-						<Step number={0} title="Bad News">
+						<Step number={1} title="Download">
 							<p className="text-sm ">
-								Sorry but there aren&#39;t any current stable releases right now. We are planning to have a
-								stable release out within the next few months, but in the meantime if you want to try it
-								out you will need to build from source. The developer guide below will walk you through
-								how to do that, and if you run into any issues or need help don&#39;t hesitate to ask in the
-								Discord or open an issue on github.
+								Just head to the <a href="https://temper-mc.com/download/" className="text-secondary underline">downloads page</a> and grab the latest download for your operating system.
+							</p>
+						</Step>
+						<Step number={2} title="Extract">
+							<p className="text-sm ">
+								Extract the downloaded file to a folder of your choosing. All the relevant files and folder like the world, config, whitelist and so on will be created in this folder so you probably don't want to just stick it in your downloads folder.
+							</p>
+						</Step>
+						<Step number={3} title="Run">
+							<p className="text-sm ">
+								Then simply run the executable. For Windows this will be the <code className="text-secondary px-1 py-0.5 rounded">temper.exe</code> file, on Mac and linux it'll be the file called <code className="text-secondary px-1 py-0.5 rounded">temper</code>. For Windows you can just double click it to start, I don't know how it works on a Mac and I'll assume you can figure out how to run an executable file if you are running Linux.
+							</p>
+						</Step>
+						<Step number={4} title="Join">
+							<p className="text-sm ">
+								Boot up your Minecraft client, open the multiplayer screen and add a new server with the IP address of the server, or just hit the LAN server that will pop up if you are on the same network as the computer running it/you are joining from the computer that is running it. <br/>
+								Note that you probably won't be able to join from computers on other wifi networks if you aren't running this on a server/VPS. Don't blame me for this, that's just how the internet works. You'll likely want to look into port forwarding or services like ngrok or tailscale to let others join. 
 							</p>
 						</Step>
 					</div>

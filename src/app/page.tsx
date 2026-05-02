@@ -28,9 +28,9 @@ export default function Home() {
 							<a href="/getting-started">
 								<button className="btn-primary">Install Now</button>
 							</a>
-							<a href="https://docs.temper-mc.com">
+							{/* <a href="https://docs.temper-mc.com">
 								<button className="btn-secondary">Documentation</button>
-							</a>
+							</a> */}
 						</div>
 					</div>
 				</section>
