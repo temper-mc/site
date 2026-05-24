@@ -1,9 +1,9 @@
-import type {Metadata} from 'next';
+import type { Metadata } from 'next';
 import Image from 'next/image';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import Main from '@/components/layout/Main';
-import React from "react";
+import React from 'react';
 
 export const metadata: Metadata = {
 	title: 'About Us',
@@ -23,48 +23,69 @@ interface GitHubContributor {
 	type: string;
 }
 
-interface stat {
+interface Stat {
 	value: string;
 	label: string;
 }
 
-const headers = {Accept: 'application/vnd.github+json'};
-
-const [locData, contributorsData] = await Promise.all([
-	fetch("https://api.codetabs.com/v1/loc/?github=temper-mc/temper", {
-		next: {revalidate: 3600}
-	}).then(r => r.json()),
-	fetch(`https://api.github.com/repos/temper-mc/temper/contributors?anon=false`, {
-		headers,
-		next: {revalidate: 3600}
-	}).then(r => r.json()),
-]);
-
-const loc = locData.find((l: { language: string }) => l.language === "Total")?.linesOfCode ?? 0;
-const contributors: GitHubContributor[] = contributorsData.filter((c: { type: string }) => c.type !== "Bot");
-
-const stats: stat[] = [
-	{value: loc.toLocaleString("en-Au"), label: 'Lines of code'},
-	{value: 'GPL-3.0', label: 'License'},
-	{value: contributors.length.toLocaleString("en-Au"), label: 'Contributors'},
-	{value: 'Bevy', label: 'ECS'},
-];
+const headers = {
+	Accept: 'application/vnd.github+json',
+};
 
 const techStack = [
-	{name: 'ECS', desc: 'Bevy ECS is used to enable massive parallelism and efficient data-oriented design.'},
-	{name: 'LMDB', desc: 'LMDB is used to store data on disk, powering fast, reliable and durable storage.'},
 	{
-		name: 'Tokio',
-		desc: 'Tokio is used for asynchronous networking, letting the server focus on running the world instead of waiting for network packets'
+		name: 'ECS',
+		desc: 'Bevy ECS is used to enable massive parallelism and efficient data-oriented design.',
 	},
 	{
-		name: "Axum",
-		desc: "Axum powers the web dashboard to serve a stylish and powerful way to manage the server remotely."
+		name: 'LMDB',
+		desc: 'LMDB is used to store data on disk, powering fast, reliable and durable storage.',
+	},
+	{
+		name: 'Tokio',
+		desc: 'Tokio is used for asynchronous networking, letting the server focus on running the world instead of waiting for network packets',
+	},
+	{
+		name: 'Axum',
+		desc: 'Axum powers the web dashboard to serve a stylish and powerful way to manage the server remotely.',
 	},
 ];
 
+
 // ─── Page ─────────────────────────────────────────────────────
-export default function AboutPage() {
+export default async function AboutPage() {
+	const [locData, contributorsData] = await Promise.all([
+		fetch(`https://api.codetabs.com/v1/loc/?github=${REPO_OWNER}/${REPO_NAME}`, {
+			next: { revalidate: 600 }, // 10 minutes
+		}).then((r) => r.json()),
+
+		fetch(
+			`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contributors?anon=false`,
+			{
+				headers,
+				next: { revalidate: 600 }, // 10 minutes
+			}
+		).then((r) => r.json()),
+	]);
+
+	const loc =
+		locData.find((l: { language: string }) => l.language === 'Total')
+			?.linesOfCode ?? 0;
+
+	const contributors: GitHubContributor[] = contributorsData.filter(
+		(c: { type: string }) => c.type !== 'Bot'
+	);
+
+	const stats: Stat[] = [
+		{ value: loc.toLocaleString('en-AU'), label: 'Lines of code' },
+		{ value: 'GPL-3.0', label: 'License' },
+		{
+			value: contributors.length.toLocaleString('en-AU'),
+			label: 'Contributors',
+		},
+		{ value: 'Bevy', label: 'ECS' },
+	];
+
 	return (
 		<div className="min-h-screen">
 			<Header/>
