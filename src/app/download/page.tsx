@@ -16,29 +16,29 @@ const MAX_RELEASES = 6;
 
 const headers = {Accept: 'application/vnd.github+json'};
 
-const releaseData: Release[] = await fetch(
-	`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/releases?per_page=${MAX_RELEASES}`,
-	{
-		headers: headers,
-		next: { revalidate: 60 },
-	}
-)
-	.then(r => {
-		if (!r.ok) throw new Error(`GitHub API error: ${r.status} ${r.statusText}`);
-		return r.json();
-	})
-	.then((data: Release[]) => {
-		if (!Array.isArray(data)) return [];
-		return data.filter((r: Release) => !r.draft);
-	})
-	.catch(() => []);
-
-const latest = releaseData[0] ?? null;  // ← was releaseData, missing [0]
-const previous = releaseData.slice(1);
-
 
 // ─── Page ─────────────────────────────────────────────────────
 export default async function DownloadPage() {
+	const releaseData: Release[] = await fetch(
+		`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/releases?per_page=${MAX_RELEASES}`,
+		{
+			headers: headers,
+			next: { revalidate: 60 },
+		}
+	)
+		.then(r => {
+			if (!r.ok) throw new Error(`GitHub API error: ${r.status} ${r.statusText}`);
+			return r.json();
+		})
+		.then((data: Release[]) => {
+			if (!Array.isArray(data)) return [];
+			return data.filter((r: Release) => !r.draft);
+		})
+		.catch(() => []);
+
+	const latest = releaseData[0] ?? null;
+	const previous = releaseData.slice(1);
+
 	return (
 		<div className="min-h-screen">
 			<Header/>
