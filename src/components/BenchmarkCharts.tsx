@@ -252,10 +252,19 @@ export default function BenchmarkCharts({ servers }: Props) {
 
 						<Tooltip
 							contentStyle={TOOLTIP_STYLE}
-							formatter={(v?: number, name?: string) => {
-								if (v == null) return ['', ''];
-								const s = servers.find((x) => x.key === name);
-								return [`${v.toFixed(1)} TPS`, s?.label ?? name ?? ''];
+							formatter={(value, name) => {
+								const rawValue = Array.isArray(value) ? value[0] : value;
+								if (rawValue == null) return ['', ''];
+
+								const numericValue =
+									typeof rawValue === 'number' ? rawValue : Number(rawValue);
+								if (Number.isNaN(numericValue)) return ['', ''];
+
+								const s = servers.find((x) => x.key === String(name));
+								return [
+									`${numericValue.toFixed(1)} TPS`,
+									s?.label ?? String(name) ?? '',
+								];
 							}}
 							labelFormatter={(l) => `${l} players`}
 						/>
