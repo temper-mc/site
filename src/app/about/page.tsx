@@ -28,9 +28,26 @@ interface Stat {
 	label: string;
 }
 
+interface CodeStats {
+	language: string;
+	linesOfCode?: number;
+}
+
 const headers = {
 	Accept: 'application/vnd.github+json',
 };
+
+async function fetchJson<T>(url: string, init?: Parameters<typeof fetch>[1]) {
+	try {
+		const response = await fetch(url, init);
+
+		if (!response.ok) return null;
+
+		return await response.json() as T;
+	} catch {
+		return null;
+	}
+}
 
 const techStack = [
 	{
@@ -55,25 +72,26 @@ const techStack = [
 // ─── Page ─────────────────────────────────────────────────────
 export default async function AboutPage() {
 	const [locData, contributorsData] = await Promise.all([
-		fetch(`https://api.codetabs.com/v1/loc/?github=${REPO_OWNER}/${REPO_NAME}`, {
+		fetchJson<CodeStats[]>(`https://api.codetabs.com/v1/loc/?github=${REPO_OWNER}/${REPO_NAME}`, {
 			next: { revalidate: 600 }, // 10 minutes
-		}).then((r) => r.json()),
+		}),
 
-		fetch(
+		fetchJson<GitHubContributor[]>(
 			`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contributors?anon=false`,
 			{
 				headers,
 				next: { revalidate: 600 }, // 10 minutes
 			}
-		).then((r) => r.json()),
+		),
 	]);
 
 	const loc =
-		locData.find((l: { language: string }) => l.language === 'Total')
+		(Array.isArray(locData) ? locData : [])
+			.find((l) => l.language === 'Total')
 			?.linesOfCode ?? 0;
 
-	const contributors: GitHubContributor[] = contributorsData.filter(
-		(c: { type: string }) => c.type !== 'Bot'
+	const contributors: GitHubContributor[] = (Array.isArray(contributorsData) ? contributorsData : []).filter(
+		(c) => c.type !== 'Bot'
 	);
 
 	const stats: Stat[] = [

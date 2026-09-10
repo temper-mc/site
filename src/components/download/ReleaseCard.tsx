@@ -104,11 +104,11 @@ export default function ReleaseCard({release, isLatest}: { release: Release; isL
 							<Markdown
 								components={{
 									a(props) {
-										const {href, children, node, ...rest} = props
+										const {href, title, children} = props
 										return (
 											<a
-												{...rest}
 												href={href}
+												title={title}
 												target="_blank"
 												rel="noopener noreferrer"
 												className="hover:underline text-info"
@@ -187,4 +187,3 @@ export default function ReleaseCard({release, isLatest}: { release: Release; isL
 	)
 
 }
-
