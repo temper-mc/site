@@ -77,7 +77,7 @@ export default function GettingStartedPage() {
 					<div className="card p-4 sm:p-6 md:p-8">
 						<Step number={1} title="Download">
 							<p className="text-sm ">
-								Just head to the <a href="https://temper-mc.com/download/" className="text-secondary underline">downloads page</a> and grab the latest download for your operating system.
+								Just head to the <a href="https://temper-mc.com/download" className="text-secondary underline">downloads page</a> and grab the latest download for your operating system.
 							</p>
 						</Step>
 						<Step number={2} title="Extract">
